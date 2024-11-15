@@ -56,3 +56,34 @@ export class DashboardChildComponent implements OnInit{
   };
 
 }
+
+
+printBarcode = async (serial: any) => {
+  try {
+      const browserPrint = new ZebraBrowserPrintWrapper(); // Create wrapper instance
+      const defaultPrinter = await browserPrint.getDefaultPrinter(); // Get default printer
+      browserPrint.setPrinter(defaultPrinter); // Set printer
+
+      console.log("Default Printer:", defaultPrinter);
+      
+      const printerStatus = await browserPrint.checkPrinterStatus(); // Check status
+      console.log("Printer Status:", printerStatus);
+
+      if (printerStatus.isReadyToPrint) {
+          const zpl = `^XA
+                       ^BY2,2,100
+                       ^FO20,20^BC^FD${serial}^FS
+                       ^XZ`;
+
+          console.log("Sending ZPL to printer:", zpl);
+          browserPrint.print(zpl);
+      } else {
+          console.error("Printer is not ready. Errors:", printerStatus.errors);
+      }
+
+  } catch (e: any) {
+      console.error("Error while printing:", e.message || e);
+      this.text = 'Error while printing';
+      this.textChange.emit(this.text);
+  }
+};
