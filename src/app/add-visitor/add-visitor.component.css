@@ -1,0 +1,16 @@
+.a{
+    background-color: rgb(3, 133, 3);
+    color: rgb(252, 252, 252);
+    border-radius: 5px;
+    border-color: rgb(3, 133, 3);
+    height: calc(10svh - 65px);
+}
+
+.division{
+    padding: 10px;
+}
+
+.ag-theme-quartz{
+    --ag-row-hover-color: rgb(131, 131, 131);
+    --ag-header-background-color: rgb(107, 128, 197);
+}

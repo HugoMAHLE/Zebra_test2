@@ -1,0 +1,14 @@
+
+
+
+
+  <div class="container">
+      <mat-form-field hintLabel="Max 10 characters">
+        <mat-label>Codigo de visita</mat-label>
+        <input matInput #input maxlength="10" placeholder="Ex. 1010101010" (input)="onInput($event)" />
+        <mat-hint align="end">{{value().length}}/10</mat-hint>
+      </mat-form-field>
+
+      <button mat-flat-button>Ingresar</button>
+  </div>
+
