@@ -6,6 +6,7 @@ import jwt from 'jsonwebtoken'
 // api/v1/users/register
 const register = async(req, res) => {
   try{
+    console.log(3)
     const {userid, email, pass} = req.body
 
     if(!userid || !email || !pass){
@@ -20,7 +21,7 @@ const register = async(req, res) => {
     const salt = await bcryptjs.genSalt(10)
     const hashpass = await bcryptjs.hash(pass, salt)
 
-    const newUser = await UserModel.createUser({userid, email, pass: hashpass})
+    const newUser = await UserModel.createUser({userid, email, pass: hashpass, utype:1})
 
     const token = jwt.sign(
       { email: newUser.email },
@@ -77,7 +78,8 @@ const login = async(req, res) => {
   }
 }
 
-const profile = async(req, res) => {
+// api/v1/users/profile
+const getProfile = async(req, res) => {
   try{
     const user = await UserModel.findOneById(req.userid)
     return res.status(500).json({ ok: true, msg: user})
@@ -93,5 +95,5 @@ const profile = async(req, res) => {
 export const UserController = {
   register,
   login,
-  profile
+  getProfile
 }
