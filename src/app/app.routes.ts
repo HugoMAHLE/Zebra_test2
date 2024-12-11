@@ -7,6 +7,7 @@ import { VisitorComponent } from './visitor/visitor.component';
 import { MenuComponent } from './menu/menu.component';
 import { HostComponent } from './host/host.component';
 import { VisitCodeComponent } from './visit-code/visit-code.component';
+import { CreateVisitComponent } from './create-visit/create-visit.component';
 
 export const routes: Routes = [
   {
@@ -23,12 +24,12 @@ export const routes: Routes = [
     component: MenuComponent,
     children: [
       {
-        path: 'visit',
-        component: VisitCodeComponent
+        path: 'CreateVisit',
+        component: CreateVisitComponent
       },
       {
-        path: 'host',
-        component: HostComponent
+        path: 'Visitor',
+        component: VisitorComponent
       },
       {
         path: 'caseta',

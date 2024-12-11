@@ -1,0 +1,16 @@
+.example-spacer{
+    flex: 1  0 auto;
+}
+
+.title{
+    text-align: center;
+    padding-bottom: 50px;
+}
+
+.center{
+    justify-content: center;
+}
+
+.text{
+    text-align: center;
+}

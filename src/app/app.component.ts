@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
 import ZebraBrowserPrintWrapper from 'zebra-browser-print-wrapper';
 
 @Component({
