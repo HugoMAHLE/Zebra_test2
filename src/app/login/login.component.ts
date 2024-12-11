@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import axios from "axios"
 
 declare var require: any;
 declare var  isLoginView: boolean;
@@ -24,39 +25,64 @@ export class LoginComponent {
 
   router = inject(Router);
 
-  onLogin() {
-    const isLocalData = localStorage.getItem("angular18Local")
+  apiURL = 'http://localhost:3000/api/v1/'
 
-    if (isLocalData != null) {
-      const users = JSON.parse(isLocalData);
+  async onLogin() {
+    // const isLocalData = localStorage.getItem("angular18Local")
 
-      const isUserFound = users.find((m: any) => m.userID == this.userObj.userID && m.pass == this.userObj.pass)
+    // if (isLocalData != null) {
+    //   const users = JSON.parse(isLocalData);
 
-      if (isUserFound != undefined){
-        this.router.navigateByUrl('menu')
-      } else {
-        alert("Numero de reloj o contraseña erroneas")
-      }
-    } else {
-      alert("No se encontro el usuario")
+    //   const isUserFound = users.find((m: any) => m.userID == this.userObj.userID && m.pass == this.userObj.pass)
+
+    //   if (isUserFound != undefined){
+    //     this.router.navigateByUrl('menu')
+    //   } else {
+    //     alert("Numero de reloj o contraseña erroneas")
+    //   }
+    // } else {
+    //   alert("No se encontro el usuario")
+    // }
+    const userid: any = this.userObj.userID
+    const pass: any = this.userObj.pass
+
+    try {
+      const {data} = await axios.post(this.apiURL + "users/login", {userid, pass})
+      console.log(data)
+    } catch (error) {
+      console.log(error)
     }
   }
 
-  onRegister() {
-    const isLocalData = localStorage.getItem("angular18Local")
+  async onRegister() {
+    // const isLocalData = localStorage.getItem("angular18Local")
 
-    if (isLocalData != null) {
-      const localArray = JSON.parse(isLocalData);
-      localArray.push(this.userObj);
-      localStorage.setItem("angular18Local", JSON.stringify(localArray))
+    // if (isLocalData != null) {
+    //   const localArray = JSON.parse(isLocalData);
+    //   localArray.push(this.userObj);
+    //   localStorage.setItem("angular18Local", JSON.stringify(localArray))
 
-    } else {
-      const localArray = [];
+    // } else {
+    //   const localArray = [];
 
-      localArray.push(this.userObj);
-      localStorage.setItem("angular18Local", JSON.stringify(localArray))
+    //   localArray.push(this.userObj);
+    //   localStorage.setItem("angular18Local", JSON.stringify(localArray))
+    // }
+    // alert("Registration Success")
+
+    const userid: any = this.userObj.userID
+    const pass: any = this.userObj.pass
+    const email: any = this.userObj.email
+
+    try {
+      console.log(1)
+      const {data} = await axios.post(this.apiURL + "users/register", {userid, email, pass})
+      console.log(2)
+      console.log(data)
+      alert("Registration Success")
+    } catch (error) {
+      console.log(error)
     }
-    alert("Registration Success")
   }
 
 }

@@ -1,14 +1,15 @@
 import test from 'node:test'
 import {db} from '../database/connection.database.js'
+import { type } from 'os'
 
-const createUser = async({userid, email, pass}) => {
+const createUser = async({userid, email, pass, utype}) => {
   const query = {
     text: `
-      insert into users (userid, email, pass)
-      values ($1, $2, $3)
+      insert into users (userid, email, pass, utype)
+      values ($1, $2, $3, $4)
       returning userid
     `,
-    values: [userid, email, pass]
+    values: [userid, email, pass, utype]
   }
 
   const {rows} = await db.query(query)
