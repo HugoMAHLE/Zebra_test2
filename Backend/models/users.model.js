@@ -1,6 +1,4 @@
-import test from 'node:test'
 import {db} from '../database/connection.database.js'
-import { type } from 'os'
 
 const createUser = async({userid, email, pass, utype}) => {
   const query = {
@@ -13,7 +11,6 @@ const createUser = async({userid, email, pass, utype}) => {
   }
 
   const {rows} = await db.query(query)
-
   return rows[0]
 }
 

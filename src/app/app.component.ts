@@ -1,6 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import ZebraBrowserPrintWrapper from 'zebra-browser-print-wrapper';
+import {
+  bootstrapApplication,
+  provideClientHydration,
+} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +14,11 @@ import ZebraBrowserPrintWrapper from 'zebra-browser-print-wrapper';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
+
 export class AppComponent {
   title = 'VMS_MAIN';
 }
+
+bootstrapApplication(AppComponent, {
+  providers: [provideClientHydration()]
+});

@@ -1,4 +1,4 @@
-<section class="vh-100 gradient-custom">
+<!-- <section class="vh-100 gradient-custom">
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-12 col-md-8 col-lg-6 col-xl-5">
@@ -69,4 +69,68 @@
       </div>
     </div>
   </div>
-</section>
+</section> -->
+
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website with Login & Signup Form | CodingNepal</title>
+    <!-- Google Fonts Link For Icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <span class="hamburger-btn material-symbols-rounded">menu</span>
+            <a href="#" class="logo">
+                <!--<img src="C:/Install_Applications/HugoMahle/Zebra_test/public/logo.png" alt="logo">-->
+                <img src="/public/logo.jpg" alt="logo" />
+                <h2>Visitor Management System</h2>
+            </a>
+            <ul class="links">
+                <span class="close-btn material-symbols-rounded">close</span>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Portfolio</a></li>
+                <li><a href="#">Courses</a></li>
+                <li><a href="#">About us</a></li>
+                <li><a href="#">Contact us</a></li>
+            </ul>
+            <button class="login-btn" (click)="showPopup()">LOG IN</button>
+        </nav>
+    </header>
+
+    <div class="blur-bg-overlay"></div>
+    <div [ngClass]="{ 'form-popup': hide, 'show-popup': show }">
+
+        <form class="loginForm">
+          <div class="form">
+          <div class="wrapper">
+            <form action="#">
+              <h2>Login</h2>
+                <div class="input-field">
+                <input type="text" required>
+                <label>Enter your email</label>
+              </div>
+              <div class="input-field">
+                <input type="password" required>
+                <label>Enter your password</label>
+              </div>
+              <div class="forget">
+                <label for="remember">
+                  <input type="checkbox" id="remember">
+                  <p>Remember me</p>
+                </label>
+                <a href="#">Forgot password?</a>
+              </div>
+              <button class="button" type="submit">Log In</button>
+              <div class="register">
+                <p>Don't have an account? <a href="#">Register</a></p>
+              </div>
+            </form>
+            </div>
+          </div>
+        </form>
+    </div>
+</body>

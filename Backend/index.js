@@ -1,6 +1,7 @@
 import 'dotenv/config';
 import express, { urlencoded } from 'express';
 import userRouter from './routes/user.route.js'
+import visitorRouter from './routes/visitor.route.js'
 import cors from "cors"
 
 const app = express();
@@ -16,6 +17,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 app.use('/api/v1/users', userRouter)
+app.use('/api/v1/visitor', visitorRouter)
 
 const PORT = process.env.PORT || 3000;
 
