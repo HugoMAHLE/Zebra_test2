@@ -55,8 +55,8 @@
     padding-left: 10px;
 }
 .btnNO{
-    background-color: rgb(218, 15, 15);
-    color: white;
+    
+    color: rgb(236, 8, 8);
     border-radius: 5px;
     height: calc(10svh - 65px);
 }
@@ -70,4 +70,5 @@
 .example-button-row {
     display: table-cell;
     max-width: 600px;
+
   }
