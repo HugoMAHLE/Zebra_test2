@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
 import { ColDef } from 'ag-grid-community';
+import { AgGridAngular } from 'ag-grid-angular';
 
 @Component({
   selector: 'app-add-visitor',
+  standalone: true,
+  imports: [AgGridAngular],
   templateUrl: './add-visitor.component.html',
   styleUrl: './add-visitor.component.css'
 })

@@ -1,12 +1,11 @@
-import { BreakpointObserver } from '@angular/cdk/layout';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatSidenav } from '@angular/material/sidenav';
 import {MatSidenavModule} from '@angular/material/sidenav';
-
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatListModule} from '@angular/material/list';
 import { NgIf } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 
 
@@ -19,29 +18,38 @@ import { NgIf } from '@angular/common';
     NgIf,
     MatToolbarModule,
     MatIconModule,
-    MatSidenav,
     MatListModule,
-    MatSidenavModule
+    MatSidenavModule,
+    RouterLink
   ]
 })
-export class VisitorComponent implements OnInit{
-  @ViewChild(MatSidenav, {static: true})
-  sidenav!: MatSidenav;
+export class VisitorComponent {
 
-  constructor (private observer : BreakpointObserver){
+  ClientForm = new FormGroup({
+    name : new FormControl('', Validators.required),
+    LName : new FormControl('', Validators.required),
+    email : new FormControl('', [Validators.required, Validators.email]),
+    Curp : new FormControl('', Validators.required),
+    Tel : new FormControl ('', Validators.required)
+  });
 
+  get nameControl(): FormControl{
+    return this.ClientForm.get('name') as FormControl
   }
-  ngOnInit(): void{
-    this.observer.observe(["(max-width: 800px)"])
-    .subscribe((res)=>{
-      if(res.matches){
-        this.sidenav.mode = "over";
-        this.sidenav.close();
-      }
-      else{
-        this.sidenav.mode = "side";
-        this.sidenav.open();
-      }
-    })
+
+  get LnameControl(): FormControl{
+    return this.ClientForm.get('LName') as FormControl
+  }
+
+  get emailControl(): FormControl{
+    return this.ClientForm.get('email') as FormControl
+  }
+
+  get CurpControl(): FormControl{
+    return this.ClientForm.get('Curp') as FormControl
+  }
+
+  get TelControl(): FormControl{
+    return this.ClientForm.get('Tel') as FormControl
   }
 }

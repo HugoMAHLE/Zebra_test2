@@ -1,9 +1,14 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ColDef } from 'ag-grid-community';
+import { AgGridAngular } from 'ag-grid-angular';
+import { MatDivider } from '@angular/material/divider';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-create-visit',
+  standalone: true,
+  imports: [AgGridAngular, MatDivider, NgIf],
   templateUrl: './create-visit.component.html',
   styleUrl: './create-visit.component.css'
 })
