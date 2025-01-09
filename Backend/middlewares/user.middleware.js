@@ -1,20 +1,24 @@
-export const verifyUserType = (req, res, user) => {
+import jwt from 'jsonwebtoken';
 
-  switch (user.type){
-    case "admin":
-      break;
-    case "general":
-      return res.status(401).json({ error: "Token not provided"})
-    case "host":
-      return res.status(401).json({ error: "Token not provided"})
+export const verifyUserType = (requiredType) => {
+  return (req, res, next) => {
+    const token = req.headers.authorization?.split(" ")[1];
 
-  }
+    if (!token) {
+      return res.status(401).json({ error: "Token not provided" });
+    }
 
-  try {
-    const {userid} = jwt.verify(token, process.env.JWT_SECRET)
-    req.userid = userid
-    next()
-  } catch (error) {
-    return res.status(400).json({error: "Invalid Token"})
-  }
-}
+    try {
+      const decoded = jwt.verify(token, process.env.JWT_SECRET);
+      req.userid = decoded.userid;
+
+      if (decoded.type !== requiredType) {
+        return res.status(403).json({ error: "Access denied" });
+      }
+
+      next();
+    } catch (error) {
+      return res.status(400).json({ error: "Invalid or expired token" });
+    }
+  };
+};

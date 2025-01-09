@@ -29,7 +29,8 @@ const findOneByEmail = async(email) => {
 const findOneById = async(userid) => {
   const query = {
     text: `
-    select * from users
+    select u.*, ut.type from users u
+    join "userType"  ut on u.utype = ut.typeid
     where userid = $1
     `,
     values: [userid]

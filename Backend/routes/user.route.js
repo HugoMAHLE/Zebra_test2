@@ -9,4 +9,8 @@ router.post('/login', UserController.login)
 
 router.get('/profile', verifyToken, UserController.getProfile)
 
+// router.get('/admin-only', verifyUserType("admin"), (req, res) => {
+//   res.send("Welcome Admin");
+// });
+
 export default router;

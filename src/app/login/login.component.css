@@ -402,7 +402,13 @@ form button:hover {
   border: none;
   outline: none;
   font-size: 16px;
-  color: #fff;
+  color: #c24343;
+}
+
+.error {
+  color: red;
+  margin-top: 10px;
+  font-size: 0.9em;
 }
 
 .input-field input:focus~label,

@@ -8,6 +8,8 @@ import { MenuComponent } from './menu/menu.component';
 import { HostComponent } from './host/host.component';
 import { VisitCodeComponent } from './visit-code/visit-code.component';
 import { CreateVisitComponent } from './create-visit/create-visit.component';
+import { ReceptionComponent } from './reception/reception.component';
+import { AuthGuard } from './auth.guard';
 
 export const routes: Routes = [
   {
@@ -24,8 +26,9 @@ export const routes: Routes = [
     component: MenuComponent,
     children: [
       {
-        path: 'CreateVisit',
-        component: CreateVisitComponent
+        path: 'host',
+        component: CreateVisitComponent,
+        canActivate: [AuthGuard]
       },
       {
         path: 'Visitor',
@@ -34,7 +37,19 @@ export const routes: Routes = [
       {
         path: 'caseta',
         component: CasetaComponent
+      },
+      {
+        path: 'recepcion',
+        component: ReceptionComponent
+      },
+      {
+        path: 'Visitor ',
+        component: VisitorComponent
+      },
+      {
+        path: 'caseta',
+        component: CasetaComponent
       }
-      ]
+    ]
   }
 ];
