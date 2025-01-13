@@ -10,7 +10,7 @@
 
 
 body {
-  background: url("C:/Install_Applications/HugoMahle/Zebra_test/public/bg4.jpg") center/cover no-repeat;
+  background: url("/assets/bg4.jpg") center/cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -38,9 +38,13 @@ body .button {
     display: flex;
     padding: 22px 0;
     align-items: center;
-    max-width: 1200px;
+    max-width: 100%;
     margin: 0 auto;
     justify-content: space-between;
+    background: rgba(255, 255, 255, 0.3); /* Semi-transparent background */
+    backdrop-filter: blur(5px); /* Blur effect */
+    -webkit-backdrop-filter: blur(5px); /* Safari support */
+    border-radius: 5px; /* Optional: rounded corners */
 }
 
 .navbar .hamburger-btn {
@@ -85,7 +89,7 @@ body .button {
 }
 
 .navbar .links a {
-    color: rgb(21, 6, 56);
+    color: rgb(255, 255, 255);
     font-size: 1.1rem;
     font-weight: 500;
     text-decoration: none;
@@ -99,7 +103,7 @@ body .button {
 .navbar .login-btn {
     border: none;
     outline: none;
-    background: #1b0e52;
+    background: #023311;
     color: #ffffff;
     font-size: 1rem;
     font-weight: 600;
@@ -113,19 +117,46 @@ body .button {
     background: #ddd;
 }
 
+/* Ensure the form is always visible */
 .form-popup {
+    display: block; /* Ensure the form is displayed */
     position: fixed;
     top: 50%;
     left: 50%;
-    z-index: 10;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.3); /* Semi-transparent background */
+    backdrop-filter: blur(10px); /* Blur effect */
+    -webkit-backdrop-filter: blur(10px); /* Safari support */
+    border-radius: 10px; /* Optional: rounded corners */
+    padding: 20px; /* Optional: padding inside the container */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow */
+    z-index: 100; /* Ensure it is above other elements */
+    opacity: 1; /* Ensure the form is fully visible */
+  }
+  
+  /* Optional: Style for the blur background overlay */
+  .blur-bg-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    opacity: 0;
-    pointer-events: none;
-    max-width: 720px;
-    background: #fff;
-    border: 2px solid #fff;
-    transform: translate(-50%, -70%);
-}
+    height: 100%;
+    z-index: 50; /* Ensure it is below the form */
+  }
+  
+  /* Remove default focus styles for input boxes */
+  input:focus, textarea:focus, select:focus {
+    outline: none; /* Remove the outline */
+    box-shadow: none; /* Remove the box shadow */
+    background-color: white; /* Keep the background color white */
+    border-color: initial; /* Reset the border color */
+  }
+  
+  /* Optional: Customize the focus styles if needed */
+  input:focus, textarea:focus, select:focus {
+    border: 1px solid #ccc; /* Optional: Add a custom border color */
+    background-color: white; /* Optional: Keep the background color white */
+  }
 
 .show-popup .form-popup {
     opacity: 1;
@@ -138,22 +169,8 @@ body .button {
     position: absolute;
     top: 12px;
     right: 12px;
-    color: #878484;
+    color: #821f1f;
     cursor: pointer;
-}
-
-.blur-bg-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 10;
-    height: 100%;
-    width: 100%;
-    opacity: 0;
-    pointer-events: none;
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    transition: 0.1s ease;
 }
 
 .show-popup .blur-bg-overlay {
@@ -178,14 +195,14 @@ body .button {
 
 .login .form-details {
   padding: 0 40px;
-  background: url("C:/Install_Applications/HugoMahle/Zebra_test/public/login-img.jpg");
+  background: url("/assets/login-img.jpg");
   background-position: center;
   background-size: cover;
 }
 
 .signup .form-details {
   padding: 0 20px;
-  background: url("C:/Install_Applications/HugoMahle/Zebra_test/public/signup-img.jpg");
+  background: url("/assets/signup-img.jpg");
   background-position: center;
   background-size: cover;
 }
@@ -220,7 +237,7 @@ form .input-field {
 }
 
 .input-field input:focus {
-    border: 1px solid #00bcd4;
+    border: none
 }
 
 .input-field label {
@@ -228,7 +245,7 @@ form .input-field {
     top: 50%;
     left: 15px;
     transform: translateY(-50%);
-    color: #4a4646;
+    color: #fff;
     pointer-events: none;
     transition: 0.2s ease;
 }
@@ -239,12 +256,12 @@ form .input-field {
 
 .input-field input:is(:focus, :valid)~label {
     transform: translateY(-120%);
-    color: #00bcd4;
+    color: #fff;
     font-size: 0.75rem;
 }
 
 .form-box a {
-    color: #00bcd4;
+    color: #fff;
     text-decoration: none;
 }
 
@@ -312,7 +329,7 @@ form button:hover {
     }
 
     .navbar .logo .img {
-      background: url("C:/Install_Applications/HugoMahle/Zebra_test/public/login-img.jpg");
+      background: url("/assets/login-img.jpg");
     }
 
     .navbar .logo h2 {
@@ -402,7 +419,7 @@ form button:hover {
   border: none;
   outline: none;
   font-size: 16px;
-  color: #c24343;
+  color: #fff;
 }
 
 .error {
@@ -464,7 +481,7 @@ button {
 button:hover {
   color: #fff;
   border-color: #fff;
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(206, 15, 15, 0.879);
 }
 
 .register {

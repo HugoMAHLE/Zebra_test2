@@ -35,6 +35,13 @@ export class MenuComponent implements OnInit{
 
   }
 
+  logout(): void {
+    // Remove token and user type from localStorage
+    localStorage.removeItem('angular18Local');
+    // Redirect to login page
+    this.router.navigate(['/login']);
+  }
+
   ngOnInit(): void{
 
     this.observer.observe(["(max-width: 800px)"])

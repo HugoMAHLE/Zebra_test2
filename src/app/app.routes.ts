@@ -28,7 +28,7 @@ export const routes: Routes = [
       {
         path: 'host',
         component: CreateVisitComponent,
-        canActivate: [AuthGuard]
+        // canActivate: [AuthGuard]
       },
       {
         path: 'Visitor',

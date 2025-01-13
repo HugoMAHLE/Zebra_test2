@@ -46,6 +46,7 @@ const login = async (req, res) => {
   try {
 
     const { userid, pass } = req.body;
+    console.log("Received login request:", { userid, pass });
     if (!userid || !pass) {
       console.log("Missing userid or pass");
       return res.status(400).json({ ok: false, msg: "Missing Data" });
@@ -63,9 +64,11 @@ const login = async (req, res) => {
       return res.status(401).json({ ok: false, msg: "Password is incorrect" });
     }
 
+    const userType = user.type.trim();
+
     // defining expiration time for the token depending on user type
     let expiresIn;
-    switch (user.type) {
+    switch (userType) {
       case "admin":
         expiresIn = "15m";
         break;
@@ -76,16 +79,17 @@ const login = async (req, res) => {
         expiresIn = "0";
         break;
       default:
-        return res.status(400).json({ ok: false, msg: "Invalid user type" });
+        expiresIn = "1h";
     }
 
+    console.log("Creating token with payload:", { id: user.id, type: user.type }); // Log the token payload
     const token = jwt.sign(
       { userid: user.userid, type: user.type },
       process.env.JWT_SECRET,
       expiresIn === "0" ? undefined : { expiresIn }
     );
 
-    return res.json({ ok: true, token: token, type: user.type });
+    return res.json({ ok: true, token: token, type: userType });
   } catch (error) {
     console.log(error);
     return res.status(500).json({

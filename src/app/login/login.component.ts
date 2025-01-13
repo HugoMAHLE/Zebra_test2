@@ -48,16 +48,17 @@ export class LoginComponent {
         });
         localStorage.setItem("angular18Local", JSON.stringify(localArray));
 
-        // if (data.type === 1) {
-        //   alert("Bienvenido, administrador");
-        //   this.router.navigate(["/admin-dashboard"]);
-        // } else if (data.type === 2) {
-        //   alert("Bienvenido, usuario general");
-        //   this.router.navigate(["/user-dashboard"]);
-        // } else if (data.type === 3) {
-        //   alert("Bienvenido, host");
-        //   this.router.navigate(["/host-dashboard"]);
-        // }
+        console.log(data.type)
+        if (data.type === 1) {
+          alert("Bienvenido, administrador");
+          this.router.navigate(["/admin-dashboard"]);
+        } else if (data.type === "user") {
+          alert("Bienvenido, usuario general");
+          this.router.navigate(["/menu/host"]);
+        } else if (data.type === 3) {
+          alert("Bienvenido, host");
+          this.router.navigate(["/host-dashboard"]);
+        }
 
         const token = localStorage.getItem("token");
         if (token) {
