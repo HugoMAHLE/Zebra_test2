@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -13,7 +13,7 @@ import axios from "axios";
   styleUrls: ['./login.component.css']
 })
 
-export class LoginComponent {
+export class LoginComponent implements OnInit {
 
   isLoginView = true;
   show = false;
@@ -25,9 +25,38 @@ export class LoginComponent {
     pass: ''
   };
 
-  router = inject(Router);
+  //router = inject(Router);
   apiURL = environment.api_URL;
   errorMessage: any;
+
+  constructor(private router: Router) { }
+
+  ngOnInit(): void {
+    const storedData = localStorage.getItem("angular18Local");
+    if (storedData) {
+      const localArray = JSON.parse(storedData);
+      const tokenData = localArray[localArray.length - 1]; // Último token guardado
+      const token = tokenData.token;
+      const payload = JSON.parse(atob(token.split(".")[1]));
+
+      // Check if the token is expired
+      const currentTime = Math.floor(Date.now() / 1000);
+      if (payload.exp > currentTime) {
+        // Token is valid, redirect based on user type
+        const payType = payload.type.trim();
+        if (payType === "admin") {
+          this.router.navigate(["menu/host"]);
+        } else if (payType === "user") {
+          this.router.navigate(["/menu/host"]);
+        } else if (payType === "host") {
+          this.router.navigate(["menu/host"]);
+        }
+      } else {
+        // Token is expired, remove it from localStorage
+        localStorage.removeItem("angular18Local");
+      }
+    }
+  }
 
   async onLogin() {
     const userid: any = this.userObj.userID;
@@ -135,30 +164,3 @@ export class LoginComponent {
   }
 }
 
-
-  //onLogin() {
-  // const isLocalData = localStorage.getItem("angular18Local")
-  // if (isLocalData != null) {
-  //   const users = JSON.parse(isLocalData);
-  //   const isUserFound = users.find((m: any) => m.userID == this.userObj.userID && m.pass == this.userObj.pass)
-  //   if (isUserFound != undefined){
-  //     this.router.navigateByUrl('menu')
-  //   } else {
-  //     alert("Numero de reloj o contraseña erroneas")
-  //   }
-  // } else {
-  //   alert("No se encontro el usuario")
-  // }
-
-  // onRegister() {
-  // const isLocalData = localStorage.getItem("angular18Local")
-  // if (isLocalData != null) {
-  //   const localArray = JSON.parse(isLocalData);
-  //   localArray.push(this.userObj);
-  //   localStorage.setItem("angular18Local", JSON.stringify(localArray))
-  // } else {
-  //   const localArray = [];
-  //   localArray.push(this.userObj);
-  //   localStorage.setItem("angular18Local", JSON.stringify(localArray))
-  // }
-  // alert("Registration Success")
