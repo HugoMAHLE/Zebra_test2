@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -13,7 +13,7 @@ import axios from "axios";
   styleUrls: ['./login.component.css']
 })
 
-export class LoginComponent {
+export class LoginComponent implements OnInit {
 
   isLoginView = true;
   show = false;
@@ -25,9 +25,32 @@ export class LoginComponent {
     pass: ''
   };
 
-  router = inject(Router);
+  //router = inject(Router);
   apiURL = environment.api_URL;
   errorMessage: any;
+
+  constructor(private router: Router) { }
+
+  ngOnInit(): void {
+    const storedData = localStorage.getItem("angular18Local");
+    if (storedData) {
+      const localArray = JSON.parse(storedData);
+      const tokenData = localArray[localArray.length - 1]; // Último token guardado
+      const token = tokenData.token;
+      const payload = JSON.parse(atob(token.split(".")[1]));
+
+      // Check if the token is expired
+      const currentTime = Math.floor(Date.now() / 1000);
+      if (payload.exp > currentTime) {
+        // Token is valid, redirect based on user type
+        let type = payload.type.trim();
+        this.navUserType(payload);
+      } else {
+        // Token is expired, remove it from localStorage
+        localStorage.removeItem("angular18Local");
+      }
+    }
+  }
 
   async onLogin() {
     const userid: any = this.userObj.userID;
@@ -48,17 +71,8 @@ export class LoginComponent {
         });
         localStorage.setItem("angular18Local", JSON.stringify(localArray));
 
-        console.log(data.type)
-        if (data.type === 1) {
-          alert("Bienvenido, administrador");
-          this.router.navigate(["/admin-dashboard"]);
-        } else if (data.type === "user") {
-          alert("Bienvenido, usuario general");
-          this.router.navigate(["/menu/host"]);
-        } else if (data.type === 3) {
-          alert("Bienvenido, host");
-          this.router.navigate(["/host-dashboard"]);
-        }
+        const userType = data.type.trim()
+        this.navUserType(userType);
 
         const token = localStorage.getItem("token");
         if (token) {
@@ -133,32 +147,37 @@ export class LoginComponent {
     localStorage.removeItem("angular18Local");
     alert("Sesión cerrada");
   }
+
+  navUserType(type: string) {
+
+    switch (type){
+      case "admin":
+        alert("Bienvenido, administrador");
+        this.router.navigate(["/menu/host"]);
+        break;
+      case "host":
+        alert("Bienvenido, host");
+        this.router.navigate(["/menu/host"]);
+        break;
+      case "caseta":
+        alert("Bienvenido, Usuario Genera");
+        this.router.navigate(["/security"]);
+        break;
+      case "recep":
+        alert("Bienvenido, Recepcion");
+        this.router.navigate(["/reception"]);
+        break;
+      case "visita":
+        alert("Bienvenido, Visitante");
+        this.router.navigate(["/visitor"]);
+        break;
+      case "unverified":
+        alert("Cuenta no verificada, Espere a que un Administrador lo de de alta");
+        break;
+      default:
+        alert("Tipo de usuario Desconocido");
+        break;
+    }
+  }
 }
 
-
-  //onLogin() {
-  // const isLocalData = localStorage.getItem("angular18Local")
-  // if (isLocalData != null) {
-  //   const users = JSON.parse(isLocalData);
-  //   const isUserFound = users.find((m: any) => m.userID == this.userObj.userID && m.pass == this.userObj.pass)
-  //   if (isUserFound != undefined){
-  //     this.router.navigateByUrl('menu')
-  //   } else {
-  //     alert("Numero de reloj o contraseña erroneas")
-  //   }
-  // } else {
-  //   alert("No se encontro el usuario")
-  // }
-
-  // onRegister() {
-  // const isLocalData = localStorage.getItem("angular18Local")
-  // if (isLocalData != null) {
-  //   const localArray = JSON.parse(isLocalData);
-  //   localArray.push(this.userObj);
-  //   localStorage.setItem("angular18Local", JSON.stringify(localArray))
-  // } else {
-  //   const localArray = [];
-  //   localArray.push(this.userObj);
-  //   localStorage.setItem("angular18Local", JSON.stringify(localArray))
-  // }
-  // alert("Registration Success")

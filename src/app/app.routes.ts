@@ -6,6 +6,7 @@ import { CasetaComponent } from './caseta/caseta.component';
 import { VisitorComponent } from './visitor/visitor.component';
 import { MenuComponent } from './menu/menu.component';
 import { HostComponent } from './host/host.component';
+import { AddVisitorComponent } from './add-visitor/add-visitor.component';
 import { VisitCodeComponent } from './visit-code/visit-code.component';
 import { CreateVisitComponent } from './create-visit/create-visit.component';
 import { ReceptionComponent } from './reception/reception.component';
@@ -27,29 +28,29 @@ export const routes: Routes = [
     children: [
       {
         path: 'host',
-        component: CreateVisitComponent,
+        component: HostComponent,
         // canActivate: [AuthGuard]
       },
       {
-        path: 'Visitor',
-        component: VisitorComponent
+        path: 'createvisit',
+        component: CreateVisitComponent
       },
       {
-        path: 'caseta',
-        component: CasetaComponent
-      },
-      {
-        path: 'recepcion',
-        component: ReceptionComponent
-      },
-      {
-        path: 'Visitor ',
-        component: VisitorComponent
-      },
-      {
-        path: 'caseta',
-        component: CasetaComponent
+        path: 'add-visitor',
+        component: AddVisitorComponent
       }
     ]
+  },
+  {
+    path: 'reception',
+    component: ReceptionComponent
+  },
+  {
+    path: 'visitor',
+    component: VisitCodeComponent
+  },
+  {
+    path: 'security',
+    component: CasetaComponent
   }
 ];

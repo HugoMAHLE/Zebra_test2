@@ -42,6 +42,15 @@ export class MenuComponent implements OnInit{
     this.router.navigate(['/login']);
   }
 
+  navHost(): void {
+    this.router.navigate(['/menu/host']);
+  }
+
+
+  navCreateVisit(): void {
+    this.router.navigate(['/menu/createvisit']);
+  }
+
   ngOnInit(): void{
 
     this.observer.observe(["(max-width: 800px)"])
