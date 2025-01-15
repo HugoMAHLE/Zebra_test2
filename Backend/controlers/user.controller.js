@@ -21,7 +21,7 @@ const register = async(req, res) => {
     const salt = await bcryptjs.genSalt(10)
     const hashpass = await bcryptjs.hash(pass, salt)
 
-    const newUser = await UserModel.createUser({userid, email, pass: hashpass, utype:1})
+    const newUser = await UserModel.createUser({userid, email, pass: hashpass, utype:2})
 
     const token = jwt.sign(
       { email: newUser.email },
@@ -53,22 +53,25 @@ const login = async (req, res) => {
     }
 
     const user = await UserModel.findOneById(userid);
+    console.log(user)
     if (!user) {
       console.log("User not found");
       return res.status(404).json({ ok: false, msg: "User does not exist" });
     }
 
     const isMatch = await bcryptjs.compare(pass, user.pass);
+    console.log(isMatch)
     if (!isMatch) {
       console.log("Password does not match");
       return res.status(401).json({ ok: false, msg: "Password is incorrect" });
     }
 
-    const userType = user.type.trim();
+    let userType = user.type.trim();
+    let userName = user.userid.trim();
 
-    // defining expiration time for the token depending on user type
+    // defining expiration time for the token and routing depending on user type
     let expiresIn;
-    switch (userType) {
+     switch (userType) {
       case "admin":
         expiresIn = "15m";
         break;
@@ -77,6 +80,7 @@ const login = async (req, res) => {
         break;
       case "general":
         expiresIn = "0";
+        userType = userName;
         break;
       default:
         expiresIn = "1h";
@@ -90,6 +94,7 @@ const login = async (req, res) => {
     );
 
     return res.json({ ok: true, token: token, type: userType });
+
   } catch (error) {
     console.log(error);
     return res.status(500).json({

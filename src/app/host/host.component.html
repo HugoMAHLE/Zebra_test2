@@ -3,11 +3,15 @@
     <h4>Check your visitors to create a new visit</h4>
     <div class="card">
         <div class="card">
-            <ag-grid-angular class="ag-theme-quartz" style="height: 400px;" [rowData]="rowData" [columnDefs]="colDefs" rowSelection="multiple" [defaultColDef]="defaultColDef">
+            <ag-grid-angular class="ag-theme-quartz" style="height: 400px;"
+              [rowData]="rowData"
+              [columnDefs]="colDefs"
+              rowSelection.checkboxes
+              [defaultColDef]="defaultColDef">
             </ag-grid-angular>
         </div>
         <div class = "contenedor">
-            <button mat-raised-button class="btn btn-dark" routerLink="/CreateVisit">
+            <button mat-raised-button class="btn btn-dark" (onClick)="navCreateVisit()">
                 Create visit
             </button>
             </div>

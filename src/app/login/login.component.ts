@@ -43,14 +43,8 @@ export class LoginComponent implements OnInit {
       const currentTime = Math.floor(Date.now() / 1000);
       if (payload.exp > currentTime) {
         // Token is valid, redirect based on user type
-        const payType = payload.type.trim();
-        if (payType === "admin") {
-          this.router.navigate(["menu/host"]);
-        } else if (payType === "user") {
-          this.router.navigate(["/menu/host"]);
-        } else if (payType === "host") {
-          this.router.navigate(["menu/host"]);
-        }
+        let type = payload.type.trim();
+        this.navUserType(payload);
       } else {
         // Token is expired, remove it from localStorage
         localStorage.removeItem("angular18Local");
@@ -77,17 +71,8 @@ export class LoginComponent implements OnInit {
         });
         localStorage.setItem("angular18Local", JSON.stringify(localArray));
 
-        console.log(data.type)
-        if (data.type === 1) {
-          alert("Bienvenido, administrador");
-          this.router.navigate(["/admin-dashboard"]);
-        } else if (data.type === "user") {
-          alert("Bienvenido, usuario general");
-          this.router.navigate(["/menu/host"]);
-        } else if (data.type === 3) {
-          alert("Bienvenido, host");
-          this.router.navigate(["/host-dashboard"]);
-        }
+        const userType = data.type.trim()
+        this.navUserType(userType);
 
         const token = localStorage.getItem("token");
         if (token) {
@@ -161,6 +146,38 @@ export class LoginComponent implements OnInit {
   logOff() {
     localStorage.removeItem("angular18Local");
     alert("Sesión cerrada");
+  }
+
+  navUserType(type: string) {
+
+    switch (type){
+      case "admin":
+        alert("Bienvenido, administrador");
+        this.router.navigate(["/menu/host"]);
+        break;
+      case "host":
+        alert("Bienvenido, host");
+        this.router.navigate(["/menu/host"]);
+        break;
+      case "caseta":
+        alert("Bienvenido, Usuario Genera");
+        this.router.navigate(["/security"]);
+        break;
+      case "recep":
+        alert("Bienvenido, Recepcion");
+        this.router.navigate(["/reception"]);
+        break;
+      case "visita":
+        alert("Bienvenido, Visitante");
+        this.router.navigate(["/visitor"]);
+        break;
+      case "unverified":
+        alert("Cuenta no verificada, Espere a que un Administrador lo de de alta");
+        break;
+      default:
+        alert("Tipo de usuario Desconocido");
+        break;
+    }
   }
 }
 

@@ -10,15 +10,15 @@
 <mat-sidenav-container>
     <mat-sidenav>
         <mat-nav-list>
-            <mat-list-item (click)="sidenav.mode == 'over' && sidenav.toggle()" routerLink="/">
+            <mat-list-item (click)="navHost()">
                 <mat-icon matListItemIcon>home</mat-icon>
                 Home
             </mat-list-item>
-            <mat-list-item (click)="sidenav.mode == 'over' && sidenav.toggle()" routerLink="/CreateVisit">
+            <mat-list-item (click)="navCreateVisit()">
                 <mat-icon matListItemIcon>playlist_add</mat-icon>
                 Create Visit
             </mat-list-item>
-            <mat-list-item (click)="sidenav.mode == 'over' && sidenav.toggle()" routerLink="/Client">
+            <mat-list-item (click)="sidenav.mode == 'over' && sidenav.toggle()" routerLink="/menu/createvisit">
                 <mat-icon matListItemIcon>supervised_user_circle</mat-icon>
                 Visitor
             </mat-list-item>
