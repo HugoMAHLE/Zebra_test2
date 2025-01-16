@@ -16,6 +16,7 @@ export class CreateVisitComponent {
   CVisitForm = new FormGroup({
     reason : new FormControl('', Validators.required),
     date : new FormControl ('', Validators.required),
+    email : new FormControl('', [Validators.required, Validators.email]),
     ent : new FormControl ('', Validators.required),
     name : new FormControl ('', Validators.required),
   });
@@ -28,6 +29,10 @@ export class CreateVisitComponent {
     return this.CVisitForm.get('reason') as FormControl
   }
 
+  get emailControl(): FormControl{
+    return this.CVisitForm.get('email') as FormControl
+  }
+
   get dateControl(): FormControl{
     return this.CVisitForm.get('date') as FormControl
   }
@@ -36,13 +41,18 @@ export class CreateVisitComponent {
     return this.CVisitForm.get('ent') as FormControl
   }
 
-  /*rowData = [
+  rowData = [
     { Name: "Tesla", Email: "tellezmagallanes@gmail.com"},
     { Name: "Ford", Email: "tellezmagallanes@gmail.com" },
     { Name: "Toyota", Email: "tellezmagallanes@gmail.com" },
-  ];*/
+  ];
 
   colDefs: ColDef[] = [
+    { field: "name" , headerName: 'Name'},  
+    { field: "email" , headerName: 'E-mail'},
+  ];
+
+  colDef: ColDef[] = [
     { field: "Name" , headerName: 'Name'},  
     { field: "LName" , headerName: 'Last Name'},
     { field: "Email" , headerName: 'E-mail'},

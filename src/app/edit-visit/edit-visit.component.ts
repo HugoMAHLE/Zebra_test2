@@ -29,8 +29,19 @@ export class EditVisitComponent {
   get CheckinControl(): FormControl{
     return this.LVisitForm.get('Checkin') as FormControl
   }
+  
+  rowData = [
+    { Name: "Tesla", Email: "tellezmagallanes@gmail.com"},
+    { Name: "Ford", Email: "tellezmagallanes@gmail.com" },
+    { Name: "Toyota", Email: "tellezmagallanes@gmail.com" },
+  ];
 
   colDefs: ColDef[] = [
+    { field: "company" , headerName: 'Company'},     
+    { field: "Email" , headerName: 'Company E-mail'}
+  ];
+
+  colDef: ColDef[] = [
     { field: "Name" , headerName: 'Name'},  
     { field: "LName" , headerName: 'Last Name'},
     { field: "Email" , headerName: 'E-mail'},

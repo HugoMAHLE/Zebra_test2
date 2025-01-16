@@ -25,7 +25,7 @@ export class HostComponent {
   colDefs: ColDef[] = [
     { field: "Name" , headerName: 'Name'
     },
-    { field: "Email" , headerName: 'E-mail'}
+    { field: "Email" , headerName: 'Company E-mail'}
   ];
 
   defaultColDef = {

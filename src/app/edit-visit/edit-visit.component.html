@@ -3,6 +3,16 @@
     <div class="card">
         <div class="card-body">
            <form>
+
+            <div class="card">
+                <ag-grid-angular class="ag-theme-quartz" style="height: 400px;"
+                  [rowData]="rowData"
+                  [columnDefs]="colDefs"
+                  rowSelection="single"
+                  [defaultColDef]="defaultColDef">
+                </ag-grid-angular>
+            </div>
+
                 <div class="card-body">
                     <label class="form-label">
                         Please enter your new date of visit
@@ -35,7 +45,7 @@
                 </div>
 
                 <div class="card">
-                    <ag-grid-angular class="ag-theme-quartz" style="height: 300px;" [columnDefs]="colDefs"
+                    <ag-grid-angular class="ag-theme-quartz" style="height: 300px;" [columnDefs]="colDef"
                         [defaultColDef]="defaultColDef">
                     </ag-grid-angular>
                 </div>

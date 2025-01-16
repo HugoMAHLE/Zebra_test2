@@ -1,19 +1,18 @@
 <div class="container">
-    <h2>Create your visits</h2>
-    <h4>Check your visitors to create a new visit</h4>
+    <h2>Check your visits</h2>
     <div class="card">
         <div class="card">
             <ag-grid-angular class="ag-theme-quartz" style="height: 400px;"
               [rowData]="rowData"
               [columnDefs]="colDefs"
-              rowSelection.checkboxes
               [defaultColDef]="defaultColDef">
             </ag-grid-angular>
         </div>
         <div class = "contenedor">
+            <h3>Do you want to create a new visit?</h3>
             <button mat-raised-button class="btn btn-dark" (onClick)="navCreateVisit()">
                 Create visit
             </button>
-            </div>
+        </div>
     </div>
 </div>

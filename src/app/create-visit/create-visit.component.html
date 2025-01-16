@@ -3,6 +3,15 @@
     <div class="card">
         <div class="card-body">
            <form>
+            <div class="card">
+                <ag-grid-angular class="ag-theme-quartz" style="height: 400px;"
+                  [rowData]="rowData"
+                  [columnDefs]="colDefs"
+                  rowSelection="single"
+                  [defaultColDef]="defaultColDef">
+                </ag-grid-angular>
+            </div>
+
                 <div class="card-body">
                     <label class="form-label">
                         Name of your company
@@ -12,6 +21,19 @@
                     <div class="errors-container"
                         *ngIf="nameControl.invalid && (nameControl.touched) || nameControl.dirty">
                         <p class="error-msg" *ngIf="nameControl.hasError('required')" style="color: #bd0c0c">The field must be required.</p>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <label class="form-label">
+                        E-mail
+                    </label>
+                    <input type="email" formControlName="email" class="form-control"
+                        placeholder="Please enter the email of the company">
+                    <div class="errors-container"
+                        *ngIf="emailControl.invalid && (emailControl.touched) || emailControl.dirty">
+                        <p class="error-msg" *ngIf="emailControl.hasError('required')" style="color: #bd0c0c">The field must be required.</p>
+                        <p class="error-msg" *ngIf="emailControl.hasError('email')" style="color: #bd0c0c">The field must be a valid email.</p>
                     </div>
                 </div>
 
@@ -59,7 +81,7 @@
                 </div>
 
                 <div class="card">
-                    <ag-grid-angular class="ag-theme-quartz" style="height: 300px;" [columnDefs]="colDefs"
+                    <ag-grid-angular class="ag-theme-quartz" style="height: 300px;" [columnDefs]="colDef"
                         [defaultColDef]="defaultColDef">
                     </ag-grid-angular>
                 </div>
