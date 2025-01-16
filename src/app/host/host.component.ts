@@ -17,15 +17,15 @@ export class HostComponent {
   router = inject(Router);
 
   rowData = [
-    { Name: "Tesla", Email: "tellezmagallanes@gmail.com"},
-    { Name: "Ford", Email: "tellezmagallanes@gmail.com" },
-    { Name: "Toyota", Email: "tellezmagallanes@gmail.com" },
+    { Name: "Tesla", Email: "tellezmagallanes@gmail.com", Code: "1234567890"},
+    { Name: "Ford", Email: "tellezmagallanes@gmail.com", Code: "1234567890"},
+    { Name: "Toyota", Email: "tellezmagallanes@gmail.com", Code: "1234567890"},
   ];
 
   colDefs: ColDef[] = [
-    { field: "Name" , headerName: 'Name'
-    },
-    { field: "Email" , headerName: 'Company E-mail'}
+    { field: "Name" , headerName: 'Name'},
+    { field: "Email" , headerName: 'Company E-mail'},
+    { field: "Code" , headerName: 'Visit code'}
   ];
 
   defaultColDef = {
