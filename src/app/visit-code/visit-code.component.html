@@ -1,46 +1,11 @@
-<!-- <mat-toolbar>
-    <img src="https://logodownload.org/wp-content/uploads/2024/04/mahle-logo.png" width="190" height="50"
-        class="d-inline-block align-text-top">
-        <span class="example-spacer"></span>
-    <button mat-icon-button>
-        <mat-icon matListItemIcon>
-            exit_to_app
-        </mat-icon>
-    </button>
-</mat-toolbar> -->
-<!-- <form formGroup="VisitCode">
-    <div class="container">
-        <div class="visit">
-            <h4>Visitor</h4>
-        </div>
-        <div class="division">
-            <h1>Welcome to MAHLE</h1>
-        </div>
-        <div class="division2">
-            <h2>Please insert your visit code</h2>
-        </div>
-        <div class="division3">
-          <mat-form-field hintLabel="Max 10 characters">
-            <mat-label>Codigo de visita</mat-label>
-            <input matInput #input maxlength="10" placeholder="Ex. 1010101010" (input)="onInput($event)" />
-            <mat-hint align="end">{{value().length}}/10</mat-hint>
-          </mat-form-field>
-         </div>
-        <div class="division4">
-            <button mat-button class="a">
-                Submit
-            </button>
-        </div>
-    </div>
-</form> -->
-
-
 <section class="vh-100" style="background-color: #dfe5ff;">
   <div class="container py-5 h-100">
+    <button (click)="logOff()">Log off</button> <!-- Temp button -->
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col col-xl-10">
         <div class="card" style="border-radius: 1rem;">
           <div class="row g-0">
+
             <div class="col-md-6 col-lg-5 d-none d-md-block">
               <img src="https://logodownload.org/wp-content/uploads/2024/04/mahle-logo.png"
                 alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem;" />

@@ -1,4 +1,5 @@
 <div class="container">
+<<<<<<< Updated upstream
     <h2>Check your visits</h2>
     <div class="card">
         <div class="card">
@@ -14,5 +15,23 @@
                 Create visit
             </button>
         </div>
+=======
+  <h2>Create your visits</h2>
+  <h4>Check your visitors to create a new visit</h4>
+  <div class="card">
+    <ag-grid-angular
+      class="ag-theme-quartz"
+      style="height: 400px;"
+      [rowData]="rowData"
+      [columnDefs]="colDefs"
+      [rowSelection]="'multiple'"
+      [defaultColDef]="defaultColDef">
+    </ag-grid-angular>
+    <div class="contenedor">
+      <button mat-raised-button class="btn btn-dark" (click)="navCreateVisit()">
+        Create visit
+      </button>
+>>>>>>> Stashed changes
     </div>
+  </div>
 </div>

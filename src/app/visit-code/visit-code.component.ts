@@ -1,5 +1,4 @@
-import { Component, OnInit, signal} from '@angular/core';
-import { FormControl, FormGroup, Validators, Form} from '@angular/forms';
+import { Component, OnInit, signal, inject} from '@angular/core';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
@@ -8,7 +7,7 @@ import { MatLabel, MatFormField } from '@angular/material/form-field';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
-
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -30,6 +29,7 @@ import {MatButtonModule} from '@angular/material/button';
 })
 export class VisitCodeComponent implements OnInit {
   protected readonly value = signal('');
+  router = inject(Router);
 
   protected onInput(event: Event) {
     this.value.set((event.target as HTMLInputElement).value);
@@ -37,6 +37,13 @@ export class VisitCodeComponent implements OnInit {
 
   ngOnInit(): void {
 
+  }
+
+  logOff() {
+    console.log("sesion terminada");
+    localStorage.removeItem("angular18Local");
+    alert("Sesión cerrada");
+    this.router.navigate(['/login']);
   }
 
 }

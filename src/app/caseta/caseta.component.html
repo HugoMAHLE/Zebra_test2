@@ -20,6 +20,7 @@
 
                   <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Please insert your visit code</h5>
 
+<<<<<<< Updated upstream
                   <div data-mdb-input-init class="form-outline mb-4">
                     <mat-form-field hintLabel="Max 10 characters">
                       <mat-label>Codigo de visita</mat-label>
@@ -27,6 +28,15 @@
                       <mat-hint align="end">{{value().length}}/10</mat-hint>
                     </mat-form-field>
                   </div>
+=======
+  <div class="container">
+    <button (click)="logOff()">Log off</button> <!-- Temp button -->
+      <mat-form-field hintLabel="Max 10 characters">
+        <mat-label>Codigo de visita</mat-label>
+        <input matInput #input maxlength="10" placeholder="Ex. 1010101010" (input)="onInput($event)" />
+        <mat-hint align="end">{{value().length}}/10</mat-hint>
+      </mat-form-field>
+>>>>>>> Stashed changes
 
                   <div class="pt-1 mb-4">
                     <button data-mdb-button-init data-mdb-ripple-init class="btn btn-dark btn-lg btn-block" type="button">Submit</button>

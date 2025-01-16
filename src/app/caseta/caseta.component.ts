@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, signal } from '@angular/core';
+import { Component, ChangeDetectionStrategy, signal, inject} from '@angular/core';
 import {
   FormsModule,
   ReactiveFormsModule,
@@ -6,6 +6,7 @@ import {
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-caseta',
@@ -23,7 +24,16 @@ import {MatButtonModule} from '@angular/material/button';
 export class CasetaComponent {
   protected readonly value = signal('');
 
+  router = inject(Router);
+
   protected onInput(event: Event) {
     this.value.set((event.target as HTMLInputElement).value);
+  }
+
+  logOff() {
+    console.log("sesion terminada");
+    localStorage.removeItem("angular18Local");
+    alert("Sesión cerrada");
+    this.router.navigate(['/login']);
   }
 }

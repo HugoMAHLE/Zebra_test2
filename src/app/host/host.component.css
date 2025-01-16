@@ -1,3 +1,4 @@
+
 .container {
     padding: 20px;
     height: calc(100% - 40px);
@@ -7,7 +8,7 @@
     display: flex;
     justify-content: center;
     padding: 10px;
-    
+
 }
 
 .ag-theme-quartz{
