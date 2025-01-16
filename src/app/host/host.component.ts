@@ -22,6 +22,7 @@ export class HostComponent {
 
   displayedColumns: string[] = ['Name', 'Email'];
 
+
   navCreateVisit(){
     this.router.navigate(["/menu/createvisit"]);
   }
