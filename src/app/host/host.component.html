@@ -1,21 +1,4 @@
-<div class="container">
-<<<<<<< Updated upstream
-    <h2>Check your visits</h2>
-    <div class="card">
-        <div class="card">
-            <ag-grid-angular class="ag-theme-quartz" style="height: 400px;"
-              [rowData]="rowData"
-              [columnDefs]="colDefs"
-              [defaultColDef]="defaultColDef">
-            </ag-grid-angular>
-        </div>
-        <div class = "contenedor">
-            <h3>Do you want to create a new visit?</h3>
-            <button mat-raised-button class="btn btn-dark" (onClick)="navCreateVisit()">
-                Create visit
-            </button>
-        </div>
-=======
+<!-- <div class="container">
   <h2>Create your visits</h2>
   <h4>Check your visitors to create a new visit</h4>
   <div class="card">
@@ -31,7 +14,39 @@
       <button mat-raised-button class="btn btn-dark" (click)="navCreateVisit()">
         Create visit
       </button>
->>>>>>> Stashed changes
     </div>
+  </div>
+</div> -->
+
+
+<div class="container">
+  <h2>Create your visits</h2>
+  <h4>Check your visitors to create a new visit</h4>
+
+  <mat-card>
+    <table mat-table [dataSource]="rowData" class="mat-elevation-z8">
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="Name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let element"> {{ element.Name }} </td>
+      </ng-container>
+
+      <!-- Email Column -->
+      <ng-container matColumnDef="Email">
+        <th mat-header-cell *matHeaderCellDef> Email </th>
+        <td mat-cell *matCellDef="let element"> {{ element.Email }} </td>
+      </ng-container>
+
+      <!-- Table Header and Rows -->
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </mat-card>
+
+  <div class="contenedor">
+    <button mat-raised-button class="btn btn-dark" (click)="navCreateVisit()">
+      Create Visit
+    </button>
   </div>
 </div>
