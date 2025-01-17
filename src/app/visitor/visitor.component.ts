@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -6,7 +6,10 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatListModule} from '@angular/material/list';
 import { NgIf } from '@angular/common';
 import { RouterLink } from '@angular/router';
-
+import axios from 'axios';
+import { environment } from '../../environments/environment.development';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 
 @Component({
@@ -15,6 +18,8 @@ import { RouterLink } from '@angular/router';
   templateUrl: './visitor.component.html',
   styleUrl: './visitor.component.css',
   imports: [
+    FormsModule,
+    CommonModule,
     NgIf,
     MatToolbarModule,
     MatIconModule,
@@ -23,7 +28,17 @@ import { RouterLink } from '@angular/router';
     RouterLink
   ]
 })
+
 export class VisitorComponent {
+  apiURL = environment.api_URL;
+
+  visitorObj: any = {
+    fname: '',
+    lname: '',
+    email: '',
+    phone: '',
+    company: ''
+  };
 
   ClientForm = new FormGroup({
     name : new FormControl('', Validators.required),
@@ -52,4 +67,27 @@ export class VisitorComponent {
   get TelControl(): FormControl{
     return this.ClientForm.get('Tel') as FormControl
   }
+
+  async registerVisitor() {
+    const fname: any = this.visitorObj.fname;
+    const lname: any = this.visitorObj.lname;
+    const email: any = this.visitorObj.email;
+    const phone: any = this.visitorObj.phone;
+    const company: any = this.visitorObj.company;
+
+    if (!fname || !lname || !email || !phone || !company) {
+
+    }
+
+
+    try {
+      const { data } = await axios.post(this.apiURL + "/creater", { fname, lname, email, phone, company });
+      console.log("Registro exitoso:", data);
+      alert("Registro exitoso");
+    } catch (error) {
+      console.error("Error en registro:", error);
+      alert("Hubo un problema con el registro");
+    }
+  }
 }
+

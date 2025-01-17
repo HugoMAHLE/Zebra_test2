@@ -4,6 +4,7 @@ import { ColDef } from 'ag-grid-community';
 import { AgGridAngular } from 'ag-grid-angular';
 import { MatDivider } from '@angular/material/divider';
 import { NgIf } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-visit',
@@ -48,12 +49,12 @@ export class CreateVisitComponent {
   ];
 
   colDefs: ColDef[] = [
-    { field: "name" , headerName: 'Name'},  
+    { field: "name" , headerName: 'Name'},
     { field: "email" , headerName: 'E-mail'},
   ];
 
   colDef: ColDef[] = [
-    { field: "Name" , headerName: 'Name'},  
+    { field: "Name" , headerName: 'Name'},
     { field: "LName" , headerName: 'Last Name'},
     { field: "Email" , headerName: 'E-mail'},
     { field: "Curp" , headerName: 'CURP'},
@@ -64,4 +65,15 @@ export class CreateVisitComponent {
     flex: 1,
     minWdith:100
   }
+
+  constructor(private router: Router) { }
+
+  addVisitor(){
+    this.router.navigate(["/menu/addvisitor"]);
+  };
+
+  createVisitor(){
+    this.router.navigate(["/menu/createvisitor"]);
+  };
+
 }

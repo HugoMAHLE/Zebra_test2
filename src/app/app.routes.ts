@@ -36,8 +36,12 @@ export const routes: Routes = [
         component: CreateVisitComponent
       },
       {
-        path: 'add-visitor',
+        path: 'addvisitor',
         component: AddVisitorComponent
+      },
+      {
+        path: 'createvisitor',
+        component: VisitorComponent
       }
     ]
   },

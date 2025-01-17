@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -25,7 +25,6 @@ export class LoginComponent implements OnInit {
     pass: ''
   };
 
-  //router = inject(Router);
   apiURL = environment.api_URL;
   errorMessage: any;
 
