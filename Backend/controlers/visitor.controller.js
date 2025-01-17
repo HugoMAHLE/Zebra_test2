@@ -2,7 +2,7 @@ import { VisitorModel } from "../models/visitor.model.js";
 import jwt from 'jsonwebtoken'
 
 
-// api/v1/users/create_visitor
+// api/v1/visitor/create
 const createVisitor = async(req, res) => {
   try{
     const {fname, lname, email, phone, company} = req.body
@@ -16,7 +16,7 @@ const createVisitor = async(req, res) => {
       return res.status(409).json({ ok: false, msg: "Visitor already exist" })
     }
 
-    const newvisitor = await visitorModel.createVisitor({fname,lname, email, phone, company})
+    const newvisitor = await VisitorModel.createVisitor({fname,lname, email, phone, company})
     return res.status(201).json({ok:true})
 
   }catch (error) {

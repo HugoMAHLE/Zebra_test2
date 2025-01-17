@@ -81,7 +81,7 @@ export class VisitorComponent {
 
 
     try {
-      const { data } = await axios.post(this.apiURL + "/creater", { fname, lname, email, phone, company });
+      const { data } = await axios.post(this.apiURL + "visitor/create", { fname, lname, email, phone, company });
       console.log("Registro exitoso:", data);
       alert("Registro exitoso");
     } catch (error) {
