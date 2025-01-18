@@ -67,18 +67,18 @@ const createVisitor = async(req, res) => {
 // }
 
 // api/v1/users/visitors
-const getVisitors = async(req, res) => {
-  try{
-    const visitors = await VisitorModel.getAllVisitors()
-    return res.status(500).json({ ok: true, msg: visitors})
-  }catch (error) {
-    console.log(error)
+const getVisitors = async (req, res) => {
+  try {
+    const visitors = await VisitorModel.getAllVisitors(); // Fetch visitors
+    return res.status(200).json({ ok: true, msg: visitors }); // Send successful response
+  } catch (error) {
+    console.error('Error fetching visitors:', error); // Log error for debugging
     return res.status(500).json({
       ok: false,
-      msg: 'Error server'
-    })
+      msg: 'Error occurred while fetching visitors', // Provide a more descriptive error message
+    });
   }
-}
+};
 
 export const VisitorController = {
   createVisitor,

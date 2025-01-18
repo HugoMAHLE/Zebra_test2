@@ -69,13 +69,19 @@ const createVisitor = async ({ fname, lname, email, phone, company }) => {
   }
 };
 
-const getAllVisitors = async() => {
-  const query = {
-    text: `select * from visitors`
+const getAllVisitors = async () => {
+  try {
+    const query = {
+      text: 'SELECT * FROM visitors',
+    };
+    const { rows } = await db.query(query);
+
+    return rows || [];
+  } catch (error) {
+    console.error('Error fetching visitors from the database:', error);
+    throw new Error('Database query failed');
   }
-  const {rows} = await db.query(query)
-  return rows
-}
+};
 
 const findVisitorByEmail = async(email) => {
   const query = {
@@ -109,3 +115,5 @@ export const VisitorModel = {
   getAllVisitors,
   findVisitorsByCompany
 }
+
+
