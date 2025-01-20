@@ -59,7 +59,7 @@ interface Visitor {
   styleUrls: ['./add-visitor.component.css']
 })
 export class AddVisitorComponent implements OnInit {
-  displayedColumns: string[] = ['select', 'Name', 'LName', 'Email', 'Phone', 'actions'];
+  displayedColumns: string[] = ['select', 'Name', 'LName', 'Email', 'Phone', 'Company', 'actions'];
   dataSource: MatTableDataSource<Visitor> = new MatTableDataSource<Visitor>([]);
   totalLength = 0;
   apiURL = environment.api_URL;

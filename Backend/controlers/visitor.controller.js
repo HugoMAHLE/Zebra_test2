@@ -80,7 +80,21 @@ const getVisitors = async (req, res) => {
   }
 };
 
+const getCompanies = async (req, res) => {
+  try {
+    const companies = await VisitorModel.getAllCompanies(); // Fetch visitors
+    return res.status(200).json({ ok: true, msg: companies }); // Send successful response
+  } catch (error) {
+    console.error('Error fetching companies:', error); // Log error for debugging
+    return res.status(500).json({
+      ok: false,
+      msg: 'Error occurred while fetching companies', // Provide a more descriptive error message
+    });
+  }
+};
+
 export const VisitorController = {
   createVisitor,
   getVisitors,
+  getCompanies
 }

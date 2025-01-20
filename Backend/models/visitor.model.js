@@ -72,13 +72,31 @@ const createVisitor = async ({ fname, lname, email, phone, company }) => {
 const getAllVisitors = async () => {
   try {
     const query = {
-      text: 'SELECT * FROM visitors',
+      text: `
+      SELECT v.*, c.company FROM visitors v
+      left Join companies c
+      on v.companyid = c.id`,
     };
     const { rows } = await db.query(query);
 
     return rows || [];
   } catch (error) {
     console.error('Error fetching visitors from the database:', error);
+    throw new Error('Database query failed');
+  }
+};
+
+const getAllCompanies = async () => {
+  try {
+    const query = {
+      text: `SELECT * FROM companies`,
+    };
+    const { rows } = await db.query(query);
+
+    // Extract the "name" column from each row
+    return rows.map(row => row.name) || [];
+  } catch (error) {
+    console.error('Error fetching companies from the database:', error);
     throw new Error('Database query failed');
   }
 };
@@ -113,7 +131,8 @@ export const VisitorModel = {
   createVisitor,
   findVisitorByEmail,
   getAllVisitors,
-  findVisitorsByCompany
+  findVisitorsByCompany,
+  getAllCompanies
 }
 
 
