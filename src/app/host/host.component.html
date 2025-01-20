@@ -1,8 +1,7 @@
 
 
 <div class="container">
-  <h2>Create your visits</h2>
-  <h4>Check your visitors to create a new visit</h4>
+  <h2>Check your visits</h2>
 
   <mat-card>
     <table mat-table [dataSource]="rowData" class="mat-elevation-z8">
@@ -26,6 +25,7 @@
   </mat-card>
 
   <div class="contenedor">
+    <h4>Do you want to create a visit?</h4>
     <button mat-raised-button class="btn btn-dark" (click)="navCreateVisit()">
       Create Visit
     </button>

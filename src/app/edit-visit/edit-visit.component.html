@@ -1,16 +1,36 @@
 <div class="container">
-    <h2>Edit the visitor</h2>
+    <h2>Edit the visit</h2>
     <div class="card">
         <div class="card-body">
            <form>
 
             <div class="card">
-                <ag-grid-angular class="ag-theme-quartz" style="height: 400px;"
-                  [rowData]="rowData"
-                  [columnDefs]="colDefs"
-                  rowSelection="single"
-                  [defaultColDef]="defaultColDef">
-                </ag-grid-angular>
+                <h3>Select your visit to edit</h3>
+                <table mat-table [dataSource]="dataSource"  class="mat-elevation-z8">
+                    <!-- Name of company Column -->
+                    <ng-container matColumnDef="name">
+                        <th mat-header-cell *matHeaderCellDef> Company name </th>
+                        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                    </ng-container>
+                        
+                    <!-- Email Column -->
+                    <ng-container matColumnDef="email">
+                        <th mat-header-cell *matHeaderCellDef> E-mail </th>
+                        <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+                    </ng-container>
+
+                        <!-- Actions -->
+                    <ng-container matColumnDef="Action">
+                        <th mat-header-cell *matHeaderCellDef>Action</th>
+                        <td mat-cell *matCellDef="let row">
+                        <button class="btnn" mat-button color="primary">Select</button>
+                        <button class="btnn" mat-button color="accent">Delete</button>
+                        </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
             </div>
 
                 <div class="card-body">
@@ -45,9 +65,34 @@
                 </div>
 
                 <div class="card">
-                    <ag-grid-angular class="ag-theme-quartz" style="height: 300px;" [columnDefs]="colDef"
-                        [defaultColDef]="defaultColDef">
-                    </ag-grid-angular>
+                    <table mat-table [dataSource]="dataSource"  class="mat-elevation-z8">
+                        <!-- Name Column -->
+                        <ng-container matColumnDef="Name">
+                            <th mat-header-cell *matHeaderCellDef> Name </th>
+                            <td mat-cell *matCellDef="let element"> {{element.Name}} </td>
+                        </ng-container>
+
+                        <!-- Last Name Column -->
+                        <ng-container matColumnDef="LName">
+                            <th mat-header-cell *matHeaderCellDef> Name </th>
+                            <td mat-cell *matCellDef="let element"> {{element.Name}} </td>
+                        </ng-container>
+                            
+                        <!-- Email Column -->
+                        <ng-container matColumnDef="Email">
+                            <th mat-header-cell *matHeaderCellDef> E-mail </th>
+                            <td mat-cell *matCellDef="let element"> {{element.Email}} </td>
+                        </ng-container>
+
+                        <!-- Phone Column -->
+                        <ng-container matColumnDef="Phone">
+                            <th mat-header-cell *matHeaderCellDef> Phone number </th>
+                            <td mat-cell *matCellDef="let element"> {{element.Phone}} </td>
+                        </ng-container>
+    
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                    </table>
                 </div>
 
                 <div class="container">
