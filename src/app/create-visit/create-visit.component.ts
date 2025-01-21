@@ -1,3 +1,4 @@
+
 // import { Component } from '@angular/core';
 // import { FormControl, FormGroup, Validators } from '@angular/forms';
 // import { ColDef, StoreRefreshAfterParams } from 'ag-grid-community';
@@ -96,7 +97,6 @@ import { AddCompanyComponent } from './dialog/addCompany.component';
 import axios from 'axios';
 import { environment } from '../../environments/environment.development';
 import {  MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { Visitor } from '../add-visitor/visitor.model';
 
 export interface TableCompany {
   CName: string;
@@ -196,11 +196,6 @@ export class CreateVisitComponent {
 
   createVisitor() {
     this.router.navigate(['/menu/createvisitor']);
-  }
-
-  addVisitorsToTable(selectedVisitors: Visitor[]) {
-    this.TableVisitors = [...this.TableVisitors, ...selectedVisitors]; // Add selected visitors to the visitors array
-    console.log('Updated visitors in CreateVisitComponent:', this.TableVisitors);
   }
 
   onEnterpriseSelect(selectedEnterprise: string) {
