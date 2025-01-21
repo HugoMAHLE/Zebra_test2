@@ -94,12 +94,38 @@ const getAllCompanies = async () => {
     const { rows } = await db.query(query);
 
     // Extract the "name" column from each row
-    return rows.map(row => row.name) || [];
+    return rows.map(row => row.company) || [];
   } catch (error) {
     console.error('Error fetching companies from the database:', error);
     throw new Error('Database query failed');
   }
 };
+
+const AddCompany = async(company) => {
+  try {
+    const query = {
+      text: `INSERT INTO companies (company) Values ($1)`,
+      values: [company]
+    };
+    const { rows } = await db.query(query);
+    return rows[0]
+  } catch (error) {
+    console.error('Error adding company to the database:', error);
+    throw new Error('Database query failed');
+  }
+}
+
+const FindCompany = async(company) => {
+  const query = {
+    text: `
+    select * from companies
+    where company = $1
+    `,
+    values: [company]
+  }
+  const {rows} = await db.query(query)
+  return rows[0]
+}
 
 const findVisitorByEmail = async(email) => {
   const query = {
@@ -112,6 +138,7 @@ const findVisitorByEmail = async(email) => {
   const {rows} = await db.query(query)
   return rows[0]
 }
+
 
 const findVisitorsByCompany = async(company) => {
   const query = {
@@ -132,7 +159,9 @@ export const VisitorModel = {
   findVisitorByEmail,
   getAllVisitors,
   findVisitorsByCompany,
-  getAllCompanies
+  getAllCompanies,
+  AddCompany,
+  FindCompany
 }
 
 

@@ -3,21 +3,21 @@
     <div class="card">
         <div class="card-body">
            <form>
-            <div class="card">
+            <!-- <div class="card">
                 <table mat-table [dataSource]="dataSource"  class="mat-elevation-z8">
-                    <!-- Name of company Column -->
+                    Name of company Column
                     <ng-container matColumnDef="name">
                         <th mat-header-cell *matHeaderCellDef> Company name </th>
                         <td mat-cell *matCellDef="let element"> {{element.name}} </td>
                     </ng-container>
-                        
-                    <!-- Email Column -->
+
+                     Email Column
                     <ng-container matColumnDef="email">
                         <th mat-header-cell *matHeaderCellDef> E-mail </th>
                         <td mat-cell *matCellDef="let element"> {{element.email}} </td>
                     </ng-container>
 
-                        <!-- Actions -->
+                         Actions
                     <ng-container matColumnDef="Action">
                         <th mat-header-cell *matHeaderCellDef>Action</th>
                         <td mat-cell *matCellDef="let row">
@@ -28,31 +28,31 @@
                     <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
                     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
                 </table>
+            </div> -->
+            <div class="card-body">
+              <label class="form-label">Name of your company</label>
+              <div class="d-flex align-items-center">
+                <mat-form-field appearance="fill" class="flex-grow-1">
+                  <mat-label>Select or add an enterprise</mat-label>
+                  <mat-select
+                    formControlName="name"
+                    [(value)]="selectedCompany"
+                    (selectionChange)="onEnterpriseSelect($event.value)"
+                  >
+                    <mat-option *ngFor="let enterprise of enterprises" [value]="enterprise">
+                      {{ enterprise }}
+                    </mat-option>
+                    <!-- "Add New" option inside the dropdown -->
+                    <mat-option (click)="addEnterprise()" [value]="'addNew'">
+                      Add New Company
+                    </mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="nameControl.hasError('required')">
+                    The field must be required.
+                  </mat-error>mat table tat has the datasource variable
+                </mat-form-field>
+              </div>
             </div>
-                <div class="card-body">
-                    <label class="form-label">
-                        Name of your company
-                    </label>
-                    <input type="text" formControlName="name" class="form-control"
-                        placeholder="Please enter the name of your company">
-                    <div class="errors-container"
-                        *ngIf="nameControl.invalid && (nameControl.touched) || nameControl.dirty">
-                        <p class="error-msg" *ngIf="nameControl.hasError('required')" style="color: #bd0c0c">The field must be required.</p>
-                    </div>
-                </div>
-
-                <div class="card-body">
-                    <label class="form-label">
-                        E-mail
-                    </label>
-                    <input type="email" formControlName="email" class="form-control"
-                        placeholder="Please enter the email of the company">
-                    <div class="errors-container"
-                        *ngIf="emailControl.invalid && (emailControl.touched) || emailControl.dirty">
-                        <p class="error-msg" *ngIf="emailControl.hasError('required')" style="color: #bd0c0c">The field must be required.</p>
-                        <p class="error-msg" *ngIf="emailControl.hasError('email')" style="color: #bd0c0c">The field must be a valid email.</p>
-                    </div>
-                </div>
 
                 <div class="card-body">
                     <label class="form-label">
@@ -100,29 +100,29 @@
                 <div class="card">
                     <table mat-table [dataSource]="dataSource"  class="mat-elevation-z8">
                         <!-- Name Column -->
-                        <ng-container matColumnDef="Name">
-                            <th mat-header-cell *matHeaderCellDef> Name </th>
-                            <td mat-cell *matCellDef="let element"> {{element.Name}} </td>
+                        <ng-container matColumnDef="fname">
+                            <th mat-header-cell *matHeaderCellDef> First Name </th>
+                            <td mat-cell *matCellDef="let element"> {{element.fname}} </td>
                         </ng-container>
 
                         <!-- Last Name Column -->
-                        <ng-container matColumnDef="LName">
-                            <th mat-header-cell *matHeaderCellDef> Name </th>
-                            <td mat-cell *matCellDef="let element"> {{element.Name}} </td>
+                        <ng-container matColumnDef="lname">
+                            <th mat-header-cell *matHeaderCellDef> Last Name </th>
+                            <td mat-cell *matCellDef="let element"> {{element.lname}} </td>
                         </ng-container>
-                            
+
                         <!-- Email Column -->
-                        <ng-container matColumnDef="Email">
+                        <ng-container matColumnDef="email">
                             <th mat-header-cell *matHeaderCellDef> E-mail </th>
-                            <td mat-cell *matCellDef="let element"> {{element.Email}} </td>
+                            <td mat-cell *matCellDef="let element"> {{element.email}} </td>
                         </ng-container>
 
                         <!-- Phone Column -->
-                        <ng-container matColumnDef="Phone">
+                        <ng-container matColumnDef="phone">
                             <th mat-header-cell *matHeaderCellDef> Phone number </th>
-                            <td mat-cell *matCellDef="let element"> {{element.Phone}} </td>
+                            <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
                         </ng-container>
-    
+
                         <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
                         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
                     </table>

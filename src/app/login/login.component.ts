@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
       if (payload.exp > currentTime) {
         // Token is valid, redirect based on user type
         let type = payload.type.trim();
-        this.navUserType(payload);
+        this.navUserType(type);
       } else {
         // Token is expired, remove it from localStorage
         localStorage.removeItem("angular18Local");

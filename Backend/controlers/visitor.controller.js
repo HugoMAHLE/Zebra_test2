@@ -29,6 +29,32 @@ const createVisitor = async(req, res) => {
   }
 }
 
+const addCompany = async(req, res) => {
+  try{
+    const { company } = req.body
+
+    if(!company){
+      return res.status(400).json({ ok: false, msg: "Missing Data" })
+    }
+
+    const found = await VisitorModel.FindCompany(company)
+    if(found) {
+      return res.status(409).json({ ok: false, msg: "Company already exist" })
+    }
+
+    const newCompany = await VisitorModel.AddCompany(company)
+    return res.status(201).json({ok:true})
+
+  }catch (error) {
+    console.log(error)
+    return res.status(500).json({
+      ok: false,
+      msg: 'Error del servidor' + error
+    })
+
+  }
+}
+
 // // api/v1/users/login
 // const login = async(req, res) => {
 //   try{
@@ -96,5 +122,6 @@ const getCompanies = async (req, res) => {
 export const VisitorController = {
   createVisitor,
   getVisitors,
-  getCompanies
+  getCompanies,
+  addCompany
 }
