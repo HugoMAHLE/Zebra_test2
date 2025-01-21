@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
+import { Router } from 'express';
 
 @Component({
   selector: 'app-confirm-caseta',
@@ -10,5 +11,13 @@ import {MatButtonModule} from '@angular/material/button';
   styleUrl: './confirm-caseta.component.css'
 })
 export class ConfirmCasetaComponent {
+  router = inject(Router);
 
+  navPrint(){
+    this.router.navigate(["/reception/Print"]);
+  }
+
+  navEdit(){
+    this.router.navigate(["/reception/EditReception"])
+  }
 }

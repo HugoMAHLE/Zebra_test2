@@ -1,10 +1,11 @@
-import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy, inject } from '@angular/core';
 import { FormControl, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { merge } from 'rxjs';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-recep-edit',
@@ -18,6 +19,7 @@ export class RecepEditComponent {
 
   readonly email = new FormControl('', [Validators.required, Validators.email]);
   
+  router = inject(Router);
   
   errorMessage = signal('');
 
@@ -42,5 +44,9 @@ export class RecepEditComponent {
 
   protected onInput(event: Event) {
     this.value.set((event.target as HTMLInputElement).value);
+  }
+
+  navInvitados(){
+    this.router.navigate(["/security/confirm"])
   }
 }

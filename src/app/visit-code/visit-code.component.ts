@@ -46,4 +46,8 @@ export class VisitCodeComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 
+  navConfirm(){
+    this.router.navigate(["/visitor/ConfirmVisit"])
+  }
+
 }

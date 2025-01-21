@@ -20,5 +20,8 @@ logOff() {
   this.router.navigate(['/login']);
 }
 
+navConfirmCaseta(){
+  this.router.navigate(["/security/confirm"]);
+}
 
 }

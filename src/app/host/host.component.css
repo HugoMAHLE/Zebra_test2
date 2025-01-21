@@ -15,3 +15,7 @@
     --ag-row-hover-color: rgb(131, 131, 131);
     --ag-header-background-color: rgb(107, 128, 197);
 }
+
+.question{
+    text-align: left;
+}

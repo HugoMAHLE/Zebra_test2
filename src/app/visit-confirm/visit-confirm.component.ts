@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
+import { Router } from 'express';
 
 @Component({
   selector: 'app-visit-confirm',
@@ -10,7 +11,17 @@ import { MatCardModule } from '@angular/material/card';
 })
 export class VisitConfirmComponent implements OnInit {
   
+  router = inject(Router);
+
   ngOnInit(): void {
     
+  }
+
+  navYes(){
+    this.router.navigate(["/visitor/Video"]);
+  }
+
+  navNo(){
+    this.router.navigate(["/visitor/Error"])
   }
 }

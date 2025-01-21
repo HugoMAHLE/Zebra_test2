@@ -36,4 +36,8 @@ export class CasetaComponent {
     alert("Sesión cerrada");
     this.router.navigate(['/login']);
   }
+
+  navConfirmCaseta(){
+    this.router.navigate(["/security/confirm"]);
+  }
 }

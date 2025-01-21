@@ -11,6 +11,12 @@ import { VisitCodeComponent } from './visit-code/visit-code.component';
 import { CreateVisitComponent } from './create-visit/create-visit.component';
 import { ReceptionComponent } from './reception/reception.component';
 import { AuthGuard } from './auth.guard';
+import { ConfirmCasetaComponent } from './confirm-caseta/confirm-caseta.component';
+import { PrintComponent } from './print/print.component';
+import { RecepEditComponent } from './recep-edit/recep-edit.component';
+import { VisitConfirmComponent } from './visit-confirm/visit-confirm.component';
+import { VideoVisitComponent } from './video-visit/video-visit.component';
+import { VisitErrorComponent } from './visit-error/visit-error.component';
 
 export const routes: Routes = [
   {
@@ -47,14 +53,48 @@ export const routes: Routes = [
   },
   {
     path: 'reception',
-    component: ReceptionComponent
+    component: ReceptionComponent,
+    children: [
+      {
+        path: 'Confirm&Edit',
+        component: ConfirmCasetaComponent
+      },
+      {
+        path: 'EditReception',
+        component: RecepEditComponent
+      },
+      {
+        path: 'Print',
+        component: PrintComponent
+      }
+    ]
   },
   {
     path: 'visitor',
-    component: VisitCodeComponent
+    component: VisitCodeComponent,
+    children: [
+      {
+        path: 'ConfirmVisit',
+        component: VisitConfirmComponent
+      },
+      {
+        path: 'Video',
+        component: VideoVisitComponent
+      },
+      {
+        path: 'Error',
+        component: VisitErrorComponent
+      }
+    ]
   },
   {
     path: 'security',
-    component: CasetaComponent
+    component: CasetaComponent,
+    children: [
+      {
+        path: 'confirm',
+        component: ConfirmCasetaComponent
+      }
+    ]
   }
 ];
