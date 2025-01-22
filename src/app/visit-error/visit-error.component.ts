@@ -16,6 +16,6 @@ export class VisitErrorComponent {
   router = inject(Router);
 
   navConfirm(){
-    this.router.navigate(["/visiitor/ConfirmVisit"]);
+    this.router.navigate(["/visiitor/confirm-visit"]);
   }
 }

@@ -48,11 +48,11 @@ export class MenuComponent implements OnInit{
 
 
   navCreateVisit(): void {
-    this.router.navigate(['/menu/createvisit']);
+    this.router.navigate(['/menu/create-visit']);
   }
 
   navVisitor() : void{
-    this.router.navigate(['menu/createvisitor'])
+    this.router.navigate(['menu/create-visitor'])
   }
 
   ngOnInit(): void{

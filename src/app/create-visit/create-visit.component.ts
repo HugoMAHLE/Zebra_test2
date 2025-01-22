@@ -121,11 +121,11 @@ export class CreateVisitComponent {
     console.log('Parsed visitData:', visitData);
     localStorage.setItem('visitFormData', JSON.stringify(visitData));
 
-    this.router.navigate(['/menu/addvisitor']);
+    this.router.navigate(['/menu/add-visitor']);
   }
 
   createVisitor() {
-    this.router.navigate(['/menu/createvisitor']);
+    this.router.navigate(['/menu/create-visitor']);
   }
 
   onEnterpriseSelect(selectedEnterprise: string) {

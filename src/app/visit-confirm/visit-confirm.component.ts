@@ -10,18 +10,18 @@ import { Router } from 'express';
   styleUrl: './visit-confirm.component.css'
 })
 export class VisitConfirmComponent implements OnInit {
-  
+
   router = inject(Router);
 
   ngOnInit(): void {
-    
+
   }
 
   navYes(){
-    this.router.navigate(["/visitor/Video"]);
+    this.router.navigate(["/visitor/video"]);
   }
 
   navNo(){
-    this.router.navigate(["/visitor/Error"])
+    this.router.navigate(["/visitor/error"])
   }
 }

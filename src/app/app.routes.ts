@@ -38,15 +38,15 @@ export const routes: Routes = [
         // canActivate: [AuthGuard]
       },
       {
-        path: 'createvisit',
+        path: 'create-visit',
         component: CreateVisitComponent
       },
       {
-        path: 'addvisitor',
+        path: 'add-visitor',
         component: AddVisitorComponent
       },
       {
-        path: 'createvisitor',
+        path: 'create-visitor',
         component: VisitorComponent
       }
     ]
@@ -56,11 +56,11 @@ export const routes: Routes = [
     component: ReceptionComponent,
     children: [
       {
-        path: 'Confirm&Edit',
+        path: 'confirm-edit',
         component: ConfirmCasetaComponent
       },
       {
-        path: 'EditReception',
+        path: 'edit-reception',
         component: RecepEditComponent
       },
       {
@@ -74,15 +74,15 @@ export const routes: Routes = [
     component: VisitCodeComponent,
     children: [
       {
-        path: 'ConfirmVisit',
+        path: 'confirm-visit',
         component: VisitConfirmComponent
       },
       {
-        path: 'Video',
+        path: 'video',
         component: VideoVisitComponent
       },
       {
-        path: 'Error',
+        path: 'error',
         component: VisitErrorComponent
       }
     ]

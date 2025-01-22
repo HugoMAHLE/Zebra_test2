@@ -14,10 +14,10 @@ export class ConfirmCasetaComponent {
   router = inject(Router);
 
   navPrint(){
-    this.router.navigate(["/reception/Print"]);
+    this.router.navigate(["/reception/print"]);
   }
 
   navEdit(){
-    this.router.navigate(["/reception/EditReception"])
+    this.router.navigate(["/reception/edit-reception"])
   }
 }

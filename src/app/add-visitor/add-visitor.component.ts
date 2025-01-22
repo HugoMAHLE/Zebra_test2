@@ -118,7 +118,7 @@ export class AddVisitorComponent implements OnInit {
     );
     localStorage.setItem('selectedVisitors', JSON.stringify(uniqueVisitors));
     console.log('Visitors saved to localStorage:', uniqueVisitors);
-    this.router.navigate(['/menu/createvisit']);
+    this.router.navigate(['/menu/create-visit']);
   }
 
 }
