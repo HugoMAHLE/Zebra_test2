@@ -93,7 +93,7 @@ const login = async (req, res) => {
       expiresIn === "0" ? undefined : { expiresIn }
     );
 
-    return res.json({ ok: true, token: token, type: userType });
+    return res.json({ ok: true, token: token, type: userType, userid: userid  });
 
   } catch (error) {
     console.log(error);
@@ -118,8 +118,41 @@ const getProfile = async(req, res) => {
   }
 }
 
+// api/v1/users/getemail
+const getEmail = async(req, res) => {
+  try{
+    const user = await UserModel.getEmail(req.id)
+    return res.status(500).json({ ok: true, msg: user})
+  }catch (error) {
+    console.log(error)
+    return res.status(500).json({
+      ok: false,
+      msg: 'Error server'
+    })
+  }
+}
+
+// api/v1/users/getuid
+const getUID = async (req, res) => {
+  try {
+    const id = req.query.id;  // Access the id from the query parameter
+    console.log(id);  // You should now get the id passed in the query
+
+    const user = await UserModel.getUID(id);  // Use the id to query the database
+    return res.status(200).json({ ok: true, uid: user.uid });  // Send user data back in response
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({
+      ok: false,
+      msg: 'Error server'
+    });
+  }
+};
+
 export const UserController = {
   register,
   login,
-  getProfile
+  getProfile,
+  getEmail,
+  getUID
 }

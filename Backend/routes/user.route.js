@@ -8,6 +8,9 @@ router.post('/Register', UserController.register)
 router.post('/login', UserController.login)
 
 router.get('/profile', verifyToken, UserController.getProfile)
+router.get('/getemail', UserController.getEmail)
+router.get('/getuid', UserController.getUID)
+
 
 // router.get('/admin-only', verifyUserType("admin"), (req, res) => {
 //   res.send("Welcome Admin");

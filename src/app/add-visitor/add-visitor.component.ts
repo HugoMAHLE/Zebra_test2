@@ -43,12 +43,13 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { environment } from '../../environments/environment.development';
+import { Router } from '@angular/router';
 
 interface Visitor {
-  Name: string;
-  LName: string;
-  Email: string;
-  Phone: string;
+  firstname: string;
+  lastname: string;
+  email: string;
+  phone: string;
   isSelected?: boolean; // Optional property for checkbox selection
 }
 
@@ -60,7 +61,7 @@ interface Visitor {
   styleUrls: ['./add-visitor.component.css']
 })
 export class AddVisitorComponent implements OnInit {
-  displayedColumns: string[] = ['select', 'Name', 'LName', 'Email', 'Phone', 'Company', 'actions'];
+  displayedColumns: string[] = ['select', 'fname', 'lname', 'email', 'phone', 'company'];
   dataSource: MatTableDataSource<Visitor> = new MatTableDataSource<Visitor>([]);
   totalLength = 0;
   apiURL = environment.api_URL;
@@ -69,7 +70,9 @@ export class AddVisitorComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor() {}
+  constructor(
+    private router: Router,
+  ) {}
 
   ngOnInit(): void {
     this.fetchVisitors();
@@ -79,7 +82,7 @@ export class AddVisitorComponent implements OnInit {
     try {
       const response = await axios.get(this.apiURL + "visitor/all");
       if (response.data.ok) {
-        const visitors = response.data.msg; // Assuming 'msg' contains the array of visitors
+        const visitors = response.data.msg;
         this.dataSource.data = visitors;
         this.totalLength = visitors.length;
         this.dataSource.paginator = this.paginator;
@@ -92,10 +95,6 @@ export class AddVisitorComponent implements OnInit {
     }
   }
 
-  onEdit(row: any) {
-    console.log('Edit visitor:', row);
-  }
-
   selectAllRows() {
     this.dataSource.data.forEach((row) => (row.isSelected = true));
   }
@@ -106,6 +105,20 @@ export class AddVisitorComponent implements OnInit {
 
   onSelectionChange(row: Visitor, event: MatCheckboxChange): void {
     row.isSelected = event.checked;
-    console.log(`${row.Name} selected: ${row.isSelected}`);
+    console.log(`${row.firstname} selected: ${row.isSelected}`);
   }
+
+  storeVisitors(){
+    const storedVisitors: Visitor[] = JSON.parse('[]');
+    const selectedVisitors = this.dataSource.data.filter((row) => row.isSelected);
+    storedVisitors.push(...selectedVisitors);
+    const uniqueVisitors = storedVisitors.filter(
+      (visitor, index, self) =>
+        index === self.findIndex((v) => v.email === visitor.email)
+    );
+    localStorage.setItem('selectedVisitors', JSON.stringify(uniqueVisitors));
+    console.log('Visitors saved to localStorage:', uniqueVisitors);
+    this.router.navigate(['/menu/createvisit']);
+  }
+
 }

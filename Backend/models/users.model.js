@@ -39,9 +39,37 @@ const findOneById = async(userid) => {
   return rows[0]
 }
 
+const getEmail = async(id) => {
+  const query = {
+    text: `
+    select email from users
+    where userid = $1
+    `,
+    values: [id]
+  }
+  const {rows} = await db.query(query)
+  return rows[0]
+}
+
+const getUID = async(id) => {
+  const query = {
+    text: `
+    select uid from users
+    where userid = $1
+    `,
+    values: [id]
+  }
+  const {rows} = await db.query(query)
+  return rows[0]
+}
+
 
 export const UserModel = {
   createUser,
   findOneByEmail,
-  findOneById
-}
+  findOneById,
+  getEmail,
+  getUID
+};
+
+export default UserModel;

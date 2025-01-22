@@ -29,6 +29,38 @@ const createVisitor = async(req, res) => {
   }
 }
 
+// api/v1/visitor/createvisit
+const createVisit = async (req, res) => {
+  try {
+    const { name, reason, date, entry, uid, visitors } = req.body;
+
+    if (!name || !reason || !date || !entry || !visitors || visitors.length === 0) {
+      return res.status(400).json({ ok: false, msg: "Missing Data" });
+    }
+
+    const newVisit = await VisitorModel.createVisit(name, reason, date, entry, uid);
+
+    if (!newVisit) {
+      return res.status(500).json({ ok: false, msg: "Failed to create visit" });
+    }
+    const visitID = newVisit[0].visitID;
+    const linkedVisitors = await VisitorModel.linkVisitorsToVisit(visitors, visitID);
+
+    if (!linkedVisitors) {
+      return res.status(500).json({ ok: false, msg: "Failed to link visitors to the visit" });
+    }
+
+    return res.status(201).json({ ok: true, msg: "Visit created successfully" });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({
+      ok: false,
+      msg: "Server Error: " + error.message,
+    });
+  }
+};
+
+// api/v1/visitor/addcompany
 const addCompany = async(req, res) => {
   try{
     const { company } = req.body
@@ -55,44 +87,7 @@ const addCompany = async(req, res) => {
   }
 }
 
-// // api/v1/users/login
-// const login = async(req, res) => {
-//   try{
-//     const {userid, pass} = req.body
-
-//     if(!userid || !pass){
-//       return res.status(400).json({ ok: false, msg: "Missing Data" })
-//     }
-
-//     const user = await VisitorModel.findOneById(userid)
-//     if( !user ) {
-//       return res.status(404).json({ ok: false, msg: "User does not exist"})
-//     }
-
-//     const isMatch = await bcryptjs.compare(pass, user.pass)
-
-//     if (!isMatch){
-//       return res.status(401).json({ ok: false, msg: "Password is incorrect"})
-//     }
-
-//     const token = jwt.sign(
-//       { userid: user.userid },
-//       process.env.JWT_SECRET,
-//       { expiresIn:  "1h" }
-//     )
-
-//     return res.json({ok:true, token: token})
-
-//   }catch (error) {
-//     console.log(error)
-//     return res.status(500).json({
-//       ok: false,
-//       msg: 'Error del servidor'
-//     })
-//   }
-// }
-
-// api/v1/users/visitors
+// api/v1/visitor/visitors
 const getVisitors = async (req, res) => {
   try {
     const visitors = await VisitorModel.getAllVisitors(); // Fetch visitors
@@ -106,6 +101,7 @@ const getVisitors = async (req, res) => {
   }
 };
 
+//api/v1/visitor/companies
 const getCompanies = async (req, res) => {
   try {
     const companies = await VisitorModel.getAllCompanies(); // Fetch visitors
@@ -123,5 +119,6 @@ export const VisitorController = {
   createVisitor,
   getVisitors,
   getCompanies,
-  addCompany
+  addCompany,
+  createVisit
 }

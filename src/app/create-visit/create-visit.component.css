@@ -16,7 +16,7 @@
     color: rgb(252, 252, 252);
     border-radius: 5px;
     border-color: rgb(3, 133, 3);
-    height: calc(10svh - 65px);
+    height: 10%;
 }
 
 .b{
@@ -24,7 +24,7 @@
     color: rgb(252, 252, 252);
     border-radius: 5px;
     border-color: rgb(7, 162, 209);
-    height: calc(10svh - 65px);
+    height: 10%;
 }
 
 .division{

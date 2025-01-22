@@ -58,7 +58,7 @@ export class LoginComponent implements OnInit {
     try {
       const { data } = await axios.post(this.apiURL + "users/login", { userid, pass });
 
-      if (data && data.token && data.type) {
+      if (data && data.token && data.type && data.userid) {
         console.log("Login exitoso:", data);
 
         // save token and user type en localStorage
@@ -67,21 +67,22 @@ export class LoginComponent implements OnInit {
         localArray.push({
           token: data.token,
           type: data.type,
+          userid: data.userid
         });
         localStorage.setItem("angular18Local", JSON.stringify(localArray));
 
         const userType = data.type.trim()
         this.navUserType(userType);
 
-        const token = localStorage.getItem("token");
-        if (token) {
-          const payload = JSON.parse(atob(token.split(".")[1]));
-          if (payload.type === "admin") {
-            // admin
-          } else if (payload.type === "user") {
-            // user
-          }
-        }
+        // const token = localStorage.getItem("token");
+        // if (token) {
+        //   const payload = JSON.parse(atob(token.split(".")[1]));
+        //   if (payload.type === "admin") {
+        //     // admin
+        //   } else if (payload.type === "user") {
+        //     // user
+        //   }
+        // }
       } else {
         alert("Error desconocido al iniciar sesión.");
       }

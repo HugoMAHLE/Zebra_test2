@@ -32,44 +32,40 @@
     </ng-container>
 
     <!-- Name Column -->
-    <ng-container matColumnDef="Name">
+    <ng-container matColumnDef="fname">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
       <td mat-cell *matCellDef="let row">{{ row.firstname }}</td>
     </ng-container>
 
     <!-- Last Name Column -->
-    <ng-container matColumnDef="LName">
+    <ng-container matColumnDef="lname">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Last Name</th>
       <td mat-cell *matCellDef="let row">{{ row.lastname }}</td>
     </ng-container>
 
     <!-- Email Column -->
-    <ng-container matColumnDef="Email">
+    <ng-container matColumnDef="email">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>E-mail</th>
       <td mat-cell *matCellDef="let row">{{ row.email }}</td>
     </ng-container>
 
     <!-- Phone Column -->
-    <ng-container matColumnDef="Phone">
+    <ng-container matColumnDef="phone">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Phone</th>
       <td mat-cell *matCellDef="let row">{{ row.phone }}</td>
     </ng-container>
 
     <!-- company Column -->
-    <ng-container matColumnDef="Company">
+    <ng-container matColumnDef="company">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Company</th>
       <td mat-cell *matCellDef="let row">{{ row.company }}</td>
-    </ng-container>
-
-    <!-- Actions -->
-    <ng-container matColumnDef="actions">
-      <th mat-header-cell *matHeaderCellDef>Actions</th>
-      <td mat-cell *matCellDef="let row">
-        <button mat-button color="primary" (click)="onEdit(row)">Edit</button>
-      </td>
     </ng-container>
 
     <!-- Header and Row -->
     <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
+</div>
+<div class="footer">
+  <button class="button" style="vertical-align:middle" (click)="storeVisitors()"><span>Add </span></button>
+</div>
