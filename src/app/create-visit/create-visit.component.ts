@@ -10,7 +10,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatOptionModule } from '@angular/material/core';
-import { AddCompanyComponent } from './dialog/addCompany.component';
+import { AddCompanyComponent } from './dialog/addcompany/addCompany.component';
 import axios from 'axios';
 import { environment } from '../../environments/environment.development';
 import {  MatDialog, MatDialogModule } from '@angular/material/dialog';
