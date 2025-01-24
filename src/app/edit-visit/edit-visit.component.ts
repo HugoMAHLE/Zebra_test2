@@ -1,7 +1,5 @@
 import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { MatDivider } from '@angular/material/divider';
-import { NgIf } from '@angular/common';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { SelectionModel } from '@angular/cdk/collections';
 import { Router } from 'express';
@@ -30,10 +28,8 @@ export interface TableVisitors{
 @Component({
   selector: 'app-edit-visit',
   standalone: true,
-  imports: [MatDivider,  
-  FormsModule, 
+  imports: [FormsModule, 
   ReactiveFormsModule, 
-  NgIf,
   MatTableModule],
   templateUrl: './edit-visit.component.html',
   styleUrl: './edit-visit.component.css'

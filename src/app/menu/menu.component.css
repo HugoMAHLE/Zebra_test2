@@ -4,8 +4,8 @@ mat-toolbar{
 }
 
 mat-sidenav{
-    background-color: rgb(255, 255, 255);
-    color:rgb(38, 38, 187);
+    background-color: rgb(0, 32, 91);
+    color:rgb(0, 119, 73);
     width: 200px;
     border-right: none;
     padding: 16px 0;
@@ -21,7 +21,7 @@ mat-sidenav{
 }
 
 mat-sidenav-container{
-    background-color: rgb(131, 131, 131);
+    background-color: rgb(198, 214, 227);
     color: black;
     height: calc(100svh - 65px);
 
@@ -34,5 +34,20 @@ mat-sidenav-container{
 mat-divider{
     margin-top: 16px;
     margin-bottom: 16px;
-    background-color: rgb(131, 131, 131);
+    background-color: rgb(198, 214, 227);
 }
+
+.example-spacer{
+    flex: 1 0 auto;
+}
+
+.btnnn{
+    background-color: rgb(30, 42, 99);
+    color: white;
+}
+
+.bottom-nav{
+    position: absolute;
+    bottom: 20px;
+    width: 200px;
+  }
