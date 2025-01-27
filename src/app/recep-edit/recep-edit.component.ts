@@ -6,11 +6,13 @@ import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { Router } from '@angular/router';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-recep-edit',
   standalone: true,
-  imports: [ MatCardModule, MatButtonModule, MatFormFieldModule, FormsModule, ReactiveFormsModule],
+  imports: [ MatCardModule, MatButtonModule, MatFormFieldModule, FormsModule, ReactiveFormsModule, MatToolbarModule, MatIconModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './recep-edit.component.html',
   styleUrl: './recep-edit.component.css'
@@ -48,5 +50,12 @@ export class RecepEditComponent {
 
   navInvitados(){
     this.router.navigate(["/security/confirm"])
+  }
+
+  logOff() {
+    console.log("sesion terminada");
+    localStorage.removeItem("angular18Local");
+    alert("Sesión cerrada");
+    this.router.navigate(['/login']);
   }
 }

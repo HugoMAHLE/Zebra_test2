@@ -1,3 +1,28 @@
+.container {
+    padding: 20px;
+    height: calc(80svh - 40px);
+    background-color: rgb(198, 214, 227);
+}
+
 .separator{
-    padding: 50px;
+    padding: 20px;
+    background-color: rgb(237, 237, 237);
+    border-radius: 5px;
+}
+
+.title{
+    text-align: center;
+}
+
+.video{
+    padding-top: 50px;
+}
+
+.upper{
+    background-color: rgb(237, 237, 237);
+}
+
+.btnnn{
+    background-color: rgb(30, 42, 99);
+    color: white;
 }

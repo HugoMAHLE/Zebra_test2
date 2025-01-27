@@ -1,6 +1,7 @@
 .container {
     padding: 20px;
     height: calc(100% - 40px);
+    background-color:rgb(198, 214, 227);
 }
 
 .ng-touched.ng-invalid:is(input,textarea), .ng-dirty.ng-invalid:is(input, textarea){
@@ -12,21 +13,43 @@
 }
 
 .a{
-    background-color: rgb(3, 133, 3);
+    background-color: rgb(67, 176, 42);
     color: rgb(252, 252, 252);
     border-radius: 5px;
-    border-color: rgb(3, 133, 3);
+    border-color: rgb(67, 176, 42);
     height: 10%;
 }
 
 .b{
-    background-color: rgb(7, 162, 209);
+    background-color: rgb(65, 182, 230);
     color: rgb(252, 252, 252);
     border-radius: 5px;
-    border-color: rgb(7, 162, 209);
+    border-color: rgb(65, 182, 230);
     height: 10%;
 }
 
 .division{
     padding-bottom: 10px;
+}
+
+.btnnn{
+    background-color: rgb(183, 206, 149);
+    color: rgb(255, 255, 255);
+    border-radius: 5px;
+    border-color: rgb(183, 206, 149);
+}
+
+.check{
+    background-color: rgb(200, 201, 199);
+}
+
+.text{
+    color: rgb(0, 32, 91);
+}
+
+.contenedor{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+
 }

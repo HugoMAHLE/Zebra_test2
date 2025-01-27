@@ -80,8 +80,10 @@
 </div> -->
 
 <div class="container">
-  <h2>Visitor</h2>
-  <h4>Create a new visitor</h4>
+  <div class="contenedor">
+    <h2>Visitor</h2>
+    <h4>Create a new visitor</h4>
+  </div>
   <div class="card">
     <div class="card-body">
       <form>
@@ -186,12 +188,14 @@
 
         <!-- Buttons -->
         <div class="container">
-          <button class="btn btn-dark" (click)="registerVisitor()">
-            Save and Add User
-          </button>
+          <div class="center">
+            <button class="btnnn" (click)="registerVisitor()">
+              Save and Add User
+            </button>
+          </div>
         </div>
         <div class="container">
-          <button mat-button class="a" routerLink="/CreateVisit">« Get back</button>
+          <button mat-button class="a" (click)="Return()">« Get back</button>
         </div>
       </form>
     </div>

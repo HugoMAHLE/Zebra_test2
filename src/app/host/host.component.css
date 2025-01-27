@@ -19,3 +19,24 @@
 .question{
     text-align: left;
 }
+
+.separator{
+    padding-top: 10px;
+    text-align: center;
+}
+
+.check{
+    background-color: rgb(200, 201, 199);
+}
+
+.text{
+    color: rgb(0, 32, 91);
+}
+
+.btnnn{
+    background-color: rgb(183, 206, 149);
+    color: rgb(255, 255, 255);
+    border-radius: 5px;
+    border-color: rgb(183, 206, 149);
+
+}

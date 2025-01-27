@@ -1,21 +1,32 @@
-.example-spacer{
-    flex: 1  0 auto;
+.container {
+    padding: 20px;
+    height: calc(100% - 40px);
+    background-color: rgb(200, 201, 199);
 }
 
-.title{
-    padding-top: 80px;
-    text-align: center;
-    padding-bottom: 100px;
+.btnnn{
+    padding-left: 5px;
+    color: rgb(142, 58, 128);
 }
 
-.center{
-    justify-content: center;
+.dialog{
+    background-color: rgb(200, 201, 199);
 }
 
 .text{
+    color: rgb(0, 32, 91);
+}
+
+.title{
     text-align: center;
+    color: black;
 }
 
 .separator{
-    padding-top: 100px;
+    padding-top: 20px;
+    color: black;
+}
+
+.card{
+    background-color: rgb(65, 182, 230);
 }

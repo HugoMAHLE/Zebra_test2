@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatListModule} from '@angular/material/list';
 import { NgIf } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import axios from 'axios';
 import { environment } from '../../environments/environment.development';
 import { CommonModule } from '@angular/common';
@@ -24,12 +24,12 @@ import { FormsModule } from '@angular/forms';
     MatToolbarModule,
     MatIconModule,
     MatListModule,
-    MatSidenavModule,
-    RouterLink
+    MatSidenavModule
   ]
 })
 
 export class VisitorComponent {
+   router = inject(Router);
   apiURL = environment.api_URL;
 
   visitorObj: any = {
@@ -88,6 +88,10 @@ export class VisitorComponent {
       console.error("Error en registro:", error);
       alert("Hubo un problema con el registro");
     }
+  }
+
+  Return(){
+    this.router.navigate(["/menu/create-visit"])
   }
 }
 

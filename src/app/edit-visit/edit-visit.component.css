@@ -34,3 +34,17 @@
 .btnn{
     padding-left: 5px;
 }
+
+.contenedor{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.check{
+    background-color: rgb(200, 201, 199);
+}
+
+.text{
+    color: rgb(0, 32, 91);
+}

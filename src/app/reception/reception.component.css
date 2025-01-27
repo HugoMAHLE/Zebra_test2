@@ -29,8 +29,37 @@
     padding-right: 8px;
     margin-left: 6%;
     margin-right: 7%;
+    background-color: rgb(200, 201, 199);
+    border-radius: 5px;
 }
 
 .principal{
     max-width: 2000px;
+    background-color: rgb(65, 182, 230);
+}
+
+.example-spacer{
+    flex: 1 0 auto;
+}
+
+.upper{
+    background-color: rgb(237, 237, 237);
+}
+
+.btnnn{
+    background-color: rgb(30, 42, 99);
+    color: white;
+}
+
+.container{
+    background-color: rgb(198, 214, 227);
+    border-radius: 5px;
+}
+
+.See{
+    color: black;
+}
+
+.subtitle{
+    color: black;
 }

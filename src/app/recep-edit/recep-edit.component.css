@@ -1,4 +1,4 @@
-.title{
+.title {
     padding-top: 50px;
     text-align: center;
     padding-bottom: 50px;
@@ -7,6 +7,7 @@
 .container {
     padding: 20px;
     height: calc(80svh - 40px);
+    background-color: rgb(198, 214, 227);
 }
 
 .division2 {
@@ -27,21 +28,57 @@
     text-align: right;
     padding-left: 10px;
 }
-.btnNO{
-    
-    color: rgb(236, 8, 8);
+
+.btnNO {
+    background-color: rgb(186, 12, 47);
+    color: rgb(255, 255, 255);
     border-radius: 5px;
     height: calc(10svh - 65px);
 }
 
-.btnYES{
+.btnYES {
     background-color: rgb(8, 155, 8);
     color: white;
     border-radius: 5px;
     height: calc(10svh - 65px);
 }
+
 .example-button-row {
     display: table-cell;
     max-width: 600px;
 
-  }
+}
+
+.example-spacer {
+    flex: 1 0 auto;
+}
+
+.upper {
+    background-color: rgb(237, 237, 237);
+}
+
+.btnnn {
+    background-color: rgb(30, 42, 99);
+    color: white;
+}
+
+.header{
+    padding-bottom: 15px;
+}
+
+.color{
+    background-color: rgb(200, 201, 199);
+}
+
+.subtitle{
+    color: black;
+}
+
+.field{
+    color: black;
+}
+
+.input{
+    color: rgb(243, 208, 62);
+    color-scheme: red;
+}
