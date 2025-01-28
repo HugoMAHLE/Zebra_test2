@@ -1,29 +1,40 @@
 <div class="title">
-    <h1>Cabin</h1>
+  <mat-toolbar class="upper">
+      <img src="https://logodownload.org/wp-content/uploads/2024/04/mahle-logo.png" width="190" height="50"
+          class="d-inline-block align-text-top">
+      <span class="example-spacer"></span>
+      <button mat-fab extended class="btnnn" (click)="logOff()">
+          <mat-icon>logout</mat-icon>
+          Log-out
+      </button>
+  </mat-toolbar>
+  <div class="text">
+      <h1>Cabin</h1>
   </div>
   <div class="separator">
-  <mat-card appearance="outlined" class="separator">
-    <mat-card-header>
-      <div>
-        <h2>Company #1</h2>
-        <h4>Visit code: 101010</h4>
+      <mat-card appearance="outlined" class="info">
+          <mat-card-header>
+              <div class="CardNum">
+                  <h2>Company #1</h2>
+                  <h4>Visit code: 101010</h4>
+              </div>
+          </mat-card-header>
+          <mat-card appearance="outlined" class="CardInt">
+              <mat-card-header>
+                  <mat-card-title >Daniel Tellez</mat-card-title>
+              </mat-card-header>
+              <mat-card-content>
+                  <div class="CardNum">
+                      Phone number: 656-107-4675
+                  </div>
+              </mat-card-content>
+              <mat-card-actions align="end">
+                  <button mat-button class="EditBtn" (click)="navEdit()">Edit</button>
+              </mat-card-actions>
+          </mat-card>
+      </mat-card>
+      <div class="boton">
+          <button mat-button class="OKBtn" (click)="navPrint()">OK</button>
       </div>
-    </mat-card-header>
-    <mat-card appearance="outlined">
-      <mat-card-header>
-        <mat-card-title>Daniel Tellez</mat-card-title> 
-      </mat-card-header>
-      <mat-card-content>
-        <div>
-          Phone number: 656-107-4675
-        </div>
-      </mat-card-content>
-      <mat-card-actions align="end">
-        <button mat-button (click)="navEdit()">Edit</button>
-      </mat-card-actions>
-    </mat-card>
-  </mat-card>
-  <div class="boton">
-    <button mat-flat-button (click)="navPrint()">OK</button>
   </div>
-  </div>
+</div>

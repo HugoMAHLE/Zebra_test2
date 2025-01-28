@@ -1,6 +1,7 @@
 .container {
     padding: 20px;
     height: calc(100% - 40px);
+    background-color: rgb(198, 214, 227);
 }
 
 .ng-touched.ng-invalid:is(input,textarea), .ng-dirty.ng-invalid:is(input, textarea){

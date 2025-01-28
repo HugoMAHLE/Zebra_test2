@@ -2,6 +2,15 @@
     flex: 1  0 auto;
 }
 
+.upper {
+    background-color: rgb(237, 237, 237);
+}
+
+.btnnn {
+    background-color: rgb(30, 42, 99);
+    color: white;
+}
+
 .title{
     padding-top: 80px;
     text-align: center;
@@ -18,4 +27,19 @@
 
 .separator{
     padding-top: 100px;
+}
+
+.page{
+    background-color: rgb(255, 255, 255);
+}
+
+.color{
+    background-color: rgb(198, 214, 227);
+    border-radius: 5px;
+}
+
+.btnReady{
+    color: black;
+    background-color: rgb(67, 176, 42);
+    border-radius: 5px;
 }

@@ -1,11 +1,66 @@
-.separator{
+.separator {
     padding-top: 50px;
     padding-left: 100px;
     padding-bottom: 100px;
     padding-right: 100px;
+    background-color: rgb(237, 237, 237);
 }
 
-.boton{
+.boton {
     padding-top: 50px;
     text-align: end;
+}
+
+.title {
+    text-align: center;
+    background-color: rgb(237, 237, 237);
+}
+
+.container {
+    padding: 20px;
+    background-color: rgb(198, 214, 227);
+}
+
+.example-spacer {
+    flex: 1 0 auto;
+}
+
+.upper {
+    background-color: rgb(237, 237, 237);
+}
+
+.btnnn {
+    background-color: rgb(30, 42, 99);
+    color: white;
+}
+
+.text {
+    padding-top: 5%;
+}
+
+.info {
+    padding-top: 50px;
+    padding-left: 100px;
+    padding-bottom: 100px;
+    padding-right: 100px;
+    background-color: rgb(255, 255, 255);
+}
+
+.CardNum{
+    text-align: left;
+}
+
+.CardInt{
+    background-color: rgb(198, 214, 227);
+}
+
+.EditBtn{
+    background-color: rgb(65, 182, 230);
+    border-radius: 6px;
+    color: black;
+}
+
+.OKBtn{
+    background-color: rgb(67, 176, 42);
+    border-radius: 7px;
 }
