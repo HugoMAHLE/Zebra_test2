@@ -1,10 +1,10 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
-import { Component, OnInit, ViewChild, inject} from '@angular/core';
+import { Component, OnInit, ViewChild, inject } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
-import {MatSidenavModule} from '@angular/material/sidenav';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatIconModule} from '@angular/material/icon';
-import {MatListModule} from '@angular/material/list';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
 import { RouterOutlet } from '@angular/router';
 import { Router } from '@angular/router';
 import { NgIf } from '@angular/common';
@@ -19,19 +19,19 @@ import { NgIf } from '@angular/common';
     MatIconModule,
     MatListModule,
     RouterOutlet,
-    NgIf ],
+    NgIf],
   templateUrl: './menu.component.html',
   styleUrl: './menu.component.css'
 })
 
-export class MenuComponent implements OnInit{
-  @ViewChild(MatSidenav, {static: true})
+export class MenuComponent implements OnInit {
+  @ViewChild(MatSidenav, { static: true })
   sidenav!: MatSidenav;
 
   router = inject(Router);
   userType = "visit";
 
-  constructor (private observer : BreakpointObserver){
+  constructor(private observer: BreakpointObserver) {
 
   }
 
@@ -51,26 +51,25 @@ export class MenuComponent implements OnInit{
     this.router.navigate(['/menu/create-visit']);
   }
 
-  navVisitor() : void{
+  navVisitor(): void {
     this.router.navigate(['menu/create-visitor'])
   }
 
-  ngOnInit(): void{
+  ngOnInit(): void {
 
     this.observer.observe(["(max-width: 800px)"])
-    .subscribe((res)=>{
-      if(res.matches){
-        this.sidenav.mode = "over";
-        this.sidenav.close();
-      }
-      else{
-        this.sidenav.mode = "side";
-        this.sidenav.open();
-      }
-    })
+      .subscribe((res) => {
+        if (res.matches) {
+          this.sidenav.mode = "over";
+          this.sidenav.close();
+        }
+        else {
+          this.sidenav.mode = "side";
+          this.sidenav.open();
+        }
+      })
 
-    switch (this.userType)
-    {
+    switch (this.userType) {
       case ("Visit"):
         this.router.navigateByUrl('menu/visit');
         break;
