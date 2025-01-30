@@ -4,12 +4,12 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import { Router } from 'express';
-import { MatDialogActions, MatDialogContent, MatDialogTitle } from '@angular/material/dialog';
+
 
 @Component({
   selector: 'app-visit-error',
   standalone: true,
-  imports: [MatToolbarModule, MatIconModule, MatCardModule, MatButtonModule, MatDialogActions, MatDialogContent, MatDialogTitle],
+  imports: [MatToolbarModule, MatIconModule, MatCardModule, MatButtonModule],
   templateUrl: './visit-error.component.html',
   styleUrl: './visit-error.component.css'
 })

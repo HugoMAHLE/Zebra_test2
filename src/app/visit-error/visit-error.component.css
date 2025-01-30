@@ -30,3 +30,16 @@
 .card{
     background-color: rgb(65, 182, 230);
 }
+
+.upper {
+    background-color: rgb(237, 237, 237);
+}
+
+.btnnn {
+    background-color: rgb(30, 42, 99);
+    color: white;
+}
+
+.example-spacer{
+    flex: 1  0 auto;
+}

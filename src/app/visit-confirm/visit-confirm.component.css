@@ -74,3 +74,7 @@
     background-color: rgb(30, 42, 99);
     color: white;
 }
+
+.example-spacer{
+    flex: 1  0 auto;
+}

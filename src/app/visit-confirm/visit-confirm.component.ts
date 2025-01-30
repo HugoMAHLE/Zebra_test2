@@ -31,4 +31,7 @@ export class VisitConfirmComponent implements OnInit {
     this.router.navigate(["/visitor/video"]);
   }
 
+  navNo(){
+    this.router.navigate(["/visitor/error"]);
+  }
 }
